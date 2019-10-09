@@ -13,6 +13,8 @@ public class SpawnTarget : MonoBehaviour
 
     public int ShotCount = 3;
 
+
+
     public Camera GameCamera;
 
     private bool IsMarkerSpawned = false;
@@ -54,7 +56,8 @@ public class SpawnTarget : MonoBehaviour
 
                     }
                     newTarget.transform.position = new Vector3( hit.point.x,4.1f,hit.point.z);
-                    
+
+                    newTarget.GetComponent<TargetUIscript>().FiringAngleSave += 1;
                 }
                 
             }

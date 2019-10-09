@@ -21,13 +21,14 @@ public class ParabolaShot : MonoBehaviour
     void Start()
     {
         Target = GameObject.FindGameObjectWithTag("UI_Target");
-        
+        firingAngle = Target.GetComponent<TargetUIscript>().FiringAngleSave;
         StartCoroutine(SimulateProjectile());
 
     }
 
     void OnCollisionEnter(Collision other)
     {
+        gameObject.GetComponent<Rigidbody>().useGravity = true;
         if (other.collider.tag == "PLANES")
         {
             Destroy(Target, 1f);
@@ -35,6 +36,7 @@ public class ParabolaShot : MonoBehaviour
         }
         else
         {
+
             Destroy(Target, 1f);
             Destroy(gameObject, 3f);
         }

@@ -40,7 +40,7 @@ public class AI : MonoBehaviour
 		{
 			yield return new WaitForSeconds(0.2f);      //0.2초마다 코루틴 반복
 
-            if (Camera.GetComponent<GameManager>().IsStart == 0)     //스테이지 시작 전
+            if (Camera.GetComponent<GameManagement>().IsStart == 0)     //스테이지 시작 전
             {
                 enemyState = EnemyState.idle;
             }

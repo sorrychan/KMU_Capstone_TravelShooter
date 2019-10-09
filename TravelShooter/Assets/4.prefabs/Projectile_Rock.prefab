@@ -124,3 +124,4 @@ MonoBehaviour:
   Target: {fileID: 0}
   firingAngle: 15
   gravity: 9.8
+  gameController: {fileID: 0}
