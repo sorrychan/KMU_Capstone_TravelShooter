@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnTarget : MonoBehaviour
 {
@@ -13,16 +14,19 @@ public class SpawnTarget : MonoBehaviour
 
     public int ShotCount = 3;
 
+
+    public Slider PowerGauge;
+    public GameObject GaugeColor;
     public Camera GameCamera;
 
     private bool IsMarkerSpawned = false;
 
     //임시 타겟 생성용
     private GameObject newTarget;
-
+    private Color GColor;
     void Start()
     {
-
+        GColor = GaugeColor.GetComponent<Image>().color;
     }
 
 
@@ -55,6 +59,16 @@ public class SpawnTarget : MonoBehaviour
                     }
                     newTarget.transform.position = new Vector3( hit.point.x,4.1f,hit.point.z);
                     
+                    newTarget.GetComponent<TargetUIscript>().FiringPowerSave += 0.1f;
+
+                    if (newTarget.GetComponent<TargetUIscript>().FiringPowerSave > 50)
+                    {
+                        PowerGauge.value = 0.01f;
+
+                    }
+                    PowerGauge.value += 0.005f;
+
+
                 }
                 
             }
@@ -63,6 +77,7 @@ public class SpawnTarget : MonoBehaviour
                 newTarget.gameObject.tag = "UI_Target";
                 Instantiate(Projectile_1, ProjSpawnPos.position, transform.rotation);
                 ShotCount--;
+                PowerGauge.value = 0.01f;
                 IsMarkerSpawned = false;
             }
         }
