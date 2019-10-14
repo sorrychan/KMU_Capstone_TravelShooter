@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7556565892452333256}
   - component: {fileID: 7556565892452333257}
   - component: {fileID: 54205603479608526}
-  - component: {fileID: 114862832940904788}
+  - component: {fileID: 114653266237857986}
   m_Layer: 0
   m_Name: Projectile_Rock
   m_TagString: Untagged
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114862832940904788
+--- !u!114 &114653266237857986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7556565892452333258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37bb24604f095c4ab235b06b404cdfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 41b8ad303eaec62479a9599dcbf492f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShotSpeed: 20
   Target: {fileID: 0}
-  firingAngle: 15
-  gravity: 9.8
-  gameController: {fileID: 0}
+  dragValue: 0.9

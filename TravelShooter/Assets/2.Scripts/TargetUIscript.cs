@@ -6,22 +6,25 @@ using UnityEngine.UI;
 public class TargetUIscript : MonoBehaviour
 {
     [Range(15.0f, 75.0f)] public float FiringAngleSave = 15.0f;
+    [Range(30f, 50f)] public float FiringPowerSave = 30f;
 
-
-    public GameObject AngleDisplay;
+    //public GameObject AngleDisplay;
+    public GameObject PowerDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        AngleDisplay = GameObject.FindGameObjectWithTag("AngleDP");
+        PowerDisplay = GameObject.FindGameObjectWithTag("AngleDP");
     }
 
     // Update is called once per frame
     void Update()
     {
-        AngleDisplay.GetComponent<Text>().text = "Angle : "+FiringAngleSave;
+        PowerDisplay.GetComponent<Text>().text = Mathf.CeilToInt(FiringPowerSave).ToString();
+       
 
-        if (FiringAngleSave > 75.0f)
-            FiringAngleSave = 15.0f;
+
+        if (FiringPowerSave > 50f)
+            FiringPowerSave = 30f;
     }
 }
