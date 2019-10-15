@@ -21,7 +21,7 @@ public class Objects : MonoBehaviour
 
     Rigidbody rb;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.gameObject.tag == "Bullet" && isActivation == 0)      //총알의 태그 = "Bullet", 활성화 되지 않았을 경우
         {
