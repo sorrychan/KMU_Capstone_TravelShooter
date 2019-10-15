@@ -37,11 +37,11 @@ public class AI : MonoBehaviour
 
 	IEnumerator CheckMonsterState()     //적의 상태 체크
 	{
-		while (true)
+		while (true &&Camera.main.GetComponent<GameManagement>().isFailed == 0 && Camera.main.GetComponent<GameManagement>().isClear == 0)
 		{
 			yield return new WaitForSeconds(0.2f);      //0.2초마다 코루틴 반복
 
-            if (Camera.GetComponent<GameManagement>().IsStart == 0)     //스테이지 시작 전
+            if (Camera.main.GetComponent<GameManagement>().IsStart == 0)     //스테이지 시작 전
             {
                 enemyState = EnemyState.idle;
             }
@@ -77,8 +77,8 @@ public class AI : MonoBehaviour
                     nvAgent.isStopped = true;
                     gameObject.tag = "Die";
                     yield return new WaitForSeconds(1.9f);
-                    Gamemanager.GetComponent<GameManager>().EnemyCount -= 1;
-                    Gamemanager.GetComponent<GameManager>().GameClearCheak();
+                    Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
+                    Gamemanager.GetComponent<GameManagement>().GameClearCheak();
                     Destroy(gameObject);
                     break;
 
@@ -124,7 +124,7 @@ public class AI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if((collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object")&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+        if(collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
             enemyState = EnemyState.die;
         }

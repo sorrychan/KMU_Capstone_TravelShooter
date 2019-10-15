@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class CameraMoveControl : MonoBehaviour
 {
     
     public Camera MenuCamera;
-    public Camera GameCamera;
 
     public GameObject[] CameraPositions;
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
+    
 
-
-    private string[] Stages = { "Stage1_" };
+    private string Stages =  "Stage1_";
     
 
     // Start is called before the first frame update
     void Start()
     {
-        MenuCamera.enabled = true;
-        GameCamera.enabled = false;
+        //MenuCamera.enabled = true;
         canvas[0].enabled = true;
         canvas[1].enabled = false;
         canvas[2].enabled = false;
@@ -34,26 +33,24 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToMenu()
     {
-        MenuCamera.enabled = true;
+      //  MenuCamera.enabled = true;
         MenuCamera.transform.position = CameraPositions[1].transform.position;
         canvas[0].enabled = false;
         canvas[1].enabled = true;
         canvas[2].enabled = false;
-        GameCamera.enabled = false;
     }
     public void MoveToStageSelect()
     {
-        MenuCamera.enabled = true;
+       // MenuCamera.enabled = true;
         MenuCamera.transform.position = CameraPositions[2].transform.position;
         canvas[2].enabled = true;
         canvas[1].enabled = false;
-        GameCamera.enabled = false;
-        GameCamera.GetComponent<GameManagement>().IsStart = 0;
     }
 
     public void MoveToGame()
     {
-        SceneManager.LoadScene(Stages[0]);
+        string name = EventSystem.current.currentSelectedGameObject.name;
+        SceneManager.LoadScene(Stages + name);
     }
 
 

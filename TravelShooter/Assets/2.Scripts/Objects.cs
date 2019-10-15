@@ -7,6 +7,7 @@ public class Objects : MonoBehaviour
 {
     public int isActivation = 0;           //활성화 되었는가
     public Material capMaterial;
+    public int ExpForce = 700;
 
     public enum Kinds
     {
@@ -53,7 +54,7 @@ public class Objects : MonoBehaviour
                     {
                         obj.gameObject.AddComponent<Rigidbody>();
                         rb = obj.GetComponent<Rigidbody>();
-                        rb.AddExplosionForce(700, transform.position, 10, 2);       //힘, 위치, 반경, 위로 튀는 힘
+                        rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
                     }
 
                     isActivation = 1;       //상호작용 후 물체는 활성화

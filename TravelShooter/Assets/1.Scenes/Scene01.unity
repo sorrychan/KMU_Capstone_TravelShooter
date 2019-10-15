@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuCamera: {fileID: 1244269623}
-  GameCamera: {fileID: 0}
   CameraPositions:
   - {fileID: 1754130509}
   - {fileID: 504498571}
@@ -349,8 +348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e27ae350b66b1949b456ba858e318aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isClear: 0
+  isFailed: 0
   IsStart: 0
-  StageInfo: 1
+  Time: 10
+  Enemys: []
+  EnemyCount: 0
 --- !u!1 &80240297
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +781,7 @@ GameObject:
   - component: {fileID: 202243804}
   - component: {fileID: 202243803}
   m_Layer: 5
-  m_Name: S3 (1)
+  m_Name: S8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3704,7 +3707,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '3
+  m_Text: '8
 
 '
 --- !u!222 &814027923
@@ -4319,7 +4322,7 @@ GameObject:
   - component: {fileID: 1031561458}
   - component: {fileID: 1031561457}
   m_Layer: 5
-  m_Name: S2 (1)
+  m_Name: S7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5294,7 +5297,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '2
+  m_Text: '7
+
 
 '
 --- !u!222 &1385117029
