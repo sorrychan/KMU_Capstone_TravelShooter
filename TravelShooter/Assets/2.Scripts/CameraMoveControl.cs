@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMoveControl : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CameraMoveControl : MonoBehaviour
     public Canvas[] canvas;
 
 
+    private string[] Stages = { "Stage1_" };
     
 
     // Start is called before the first frame update
@@ -51,12 +53,7 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        MenuCamera.enabled = false;
-        GameCamera.enabled = true;
-        GameCamera.transform.position = CameraPositions[3].transform.position;
-        canvas[3].enabled = true;
-        canvas[2].enabled = false;
-        GameCamera.GetComponent<GameManagement>().IsStart = 1;
+        SceneManager.LoadScene(Stages[0]);
     }
 
 
