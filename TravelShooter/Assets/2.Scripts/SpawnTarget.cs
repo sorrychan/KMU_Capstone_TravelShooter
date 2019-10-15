@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SpawnTarget : MonoBehaviour
 {
+    [SerializeField] private LayerMask layermask;
     //타겟
     public GameObject Target;
     //투사체 발사 위치

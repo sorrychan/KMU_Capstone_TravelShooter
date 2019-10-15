@@ -21,15 +21,17 @@ public class PowerShot : MonoBehaviour
         projectile = gameObject;
         projRbdy = gameObject.GetComponent<Rigidbody>();
 
-        Vector3 shoot = (Target.transform.position - projectile.transform.position).normalized;
+        Vector3 newTargetPos = new Vector3(Target.transform.position.x, Target.transform.position.y /*+ 4f*/, Target.transform.position.z) ;
+        Vector3 shoot = (newTargetPos - projectile.transform.position).normalized;
 
-      
-        projRbdy.AddForce(shoot * ShotSpeed * 30.0f);
+       
+        
+        projRbdy.velocity = (shoot * ShotSpeed * 1.0f);
     }
 
     void OnCollisionEnter(Collision other)
     {
-        
+       
         if (other.collider.tag == "PLANES")
         {
             Destroy(Target, 1f);
@@ -48,10 +50,13 @@ public class PowerShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (projectile.transform.position.z > Target.transform.position.z)
+        if (gameObject != null && Target!=null)
         {
-            projRbdy.velocity = projRbdy.velocity * dragValue;
-            projRbdy.useGravity = true;
+            if (projectile.transform.position.z > Target.transform.position.z)
+            {
+                projRbdy.velocity = projRbdy.velocity * dragValue;
+                projRbdy.useGravity = true;
+            }
         }
     }
 }

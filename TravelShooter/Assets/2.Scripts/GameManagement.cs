@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManagement : MonoBehaviour
 {
     public int IsStart = 0;
-
+    public int StageInfo = 1;
 
     // Start is called before the first frame update
     void Start()

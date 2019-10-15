@@ -9,6 +9,7 @@ TagManager:
   - UI_TempTarget
   - Enemy
   - AngleDP
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - StagePlane
   - 
   - 
   - 
