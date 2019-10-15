@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b16f97947dc27c45ae482d8bed4ace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FiringAngleSave: 15
+  FiringPowerSave: 30
+  PowerDisplay: {fileID: 0}
 --- !u!1 &6743854454568390681
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +59,7 @@ GameObject:
   - component: {fileID: 8341657222723583925}
   m_Layer: 0
   m_Name: target_R
-  m_TagString: Untagged
+  m_TagString: UI_TempTarget
   m_Icon: {fileID: 2800000, guid: 17d0fb01aeaa12942b6d10d02b77a27a, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

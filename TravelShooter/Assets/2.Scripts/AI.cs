@@ -16,9 +16,10 @@ public class AI : MonoBehaviour
 	private NavMeshAgent nvAgent;       //네비메쉬를 사용하기 위해 선언
     public float Speed = 10.0f;
 	//Animator animator;                //애니메이션 제어를 위해 선언
-    public GameObject Camera;
+    public GameObject Gamemanager;      //게임메니져를 받아오기 위해 선언
     public enum EnemyPattern { pattern1,pattern2,pattern3 };  //패턴 종류
     public EnemyPattern enemypattern;
+    public float CollisionSpeed = 0.5f;
 
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
 	{
@@ -36,11 +37,11 @@ public class AI : MonoBehaviour
 
 	IEnumerator CheckMonsterState()     //적의 상태 체크
 	{
-		while (true)
+		while (true &&Camera.main.GetComponent<GameManagement>().isFailed == 0 && Camera.main.GetComponent<GameManagement>().isClear == 0)
 		{
 			yield return new WaitForSeconds(0.2f);      //0.2초마다 코루틴 반복
 
-            if (Camera.GetComponent<GameManagement>().IsStart == 0)     //스테이지 시작 전
+            if (Camera.main.GetComponent<GameManagement>().IsStart == 0)     //스테이지 시작 전
             {
                 enemyState = EnemyState.idle;
             }
@@ -76,6 +77,9 @@ public class AI : MonoBehaviour
                     nvAgent.isStopped = true;
                     gameObject.tag = "Die";
                     yield return new WaitForSeconds(1.9f);
+                    Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
+                    Gamemanager.GetComponent<GameManagement>().GameClearCheak();
+                    Destroy(gameObject);
                     break;
 
                 case EnemyState.pattern:
@@ -118,4 +122,11 @@ public class AI : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+        {
+            enemyState = EnemyState.die;
+        }
+    }
 }

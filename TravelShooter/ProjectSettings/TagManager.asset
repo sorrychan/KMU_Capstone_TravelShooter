@@ -7,8 +7,11 @@ TagManager:
   - UI_Target
   - PLANES
   - UI_TempTarget
-  - Enemy
   - AngleDP
+  - Bullet
+  - Enemy
+  - Die
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -19,9 +22,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - StagePlane
+  - DefendBase
+  - Projectiles
   - 
   - 
   - 
