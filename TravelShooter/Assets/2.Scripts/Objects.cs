@@ -75,8 +75,8 @@ public class Objects : MonoBehaviour
                     rb = gameObjects[1].gameObject.GetComponent<Rigidbody>();
                     rb.velocity = gameObjects[0].gameObject.GetComponent<Rigidbody>().velocity;
                     rb.mass = gameObjects[0].gameObject.GetComponent<Rigidbody>().mass;
-
-                    EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
+                    gameObject.tag = "Bullet";
+                   // EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
                     
                     //isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
                     break;

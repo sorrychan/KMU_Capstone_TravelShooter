@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 
 public class CameraMoveControl : MonoBehaviour
 {
-    
+    public static int A = 0;
+
     public Camera MenuCamera;
 
     public GameObject[] CameraPositions;
+
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
@@ -27,7 +29,10 @@ public class CameraMoveControl : MonoBehaviour
         canvas[2].enabled = false;
         MenuCamera.transform.position = CameraPositions[0].transform.position;
 
-       
+        if(A==1)
+        {
+            MoveToStageSelect();
+        }
     }
 
 

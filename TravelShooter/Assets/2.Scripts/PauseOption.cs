@@ -91,6 +91,7 @@ public class PauseOption : MonoBehaviour
 
     public void BackToStageSelect()
     {
+        CameraMoveControl.A = 1;
         SceneManager.LoadScene("Scene01");
     }
 }
