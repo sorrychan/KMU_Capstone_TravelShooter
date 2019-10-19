@@ -15,11 +15,18 @@ public class AI : MonoBehaviour
 	private Transform EnemyTr;          //적의 좌표
 	private NavMeshAgent nvAgent;       //네비메쉬를 사용하기 위해 선언
     public float Speed = 10.0f;
-	//Animator animator;                //애니메이션 제어를 위해 선언
+    //Child 설정된 노멀상태 애니메이션 제어
+	public Animator animator;                //애니메이션 제어를 위해 선언
     public GameObject Gamemanager;      //게임메니져를 받아오기 위해 선언
     public enum EnemyPattern { pattern1,pattern2,pattern3 };  //패턴 종류
     public EnemyPattern enemypattern;
     public float CollisionSpeed = 0.5f;
+
+    //찬솔 적 애니메이션 및 래그돌 테스트용으로 2019.10.19
+    public GameObject Charobj;
+    public GameObject Ragdobj;
+
+
 
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
 	{
@@ -74,6 +81,10 @@ public class AI : MonoBehaviour
                 case EnemyState.die:
                     //animator.SetBool("Walk", false);
                     //animator.SetBool("Die", true);
+                    Charobj.gameObject.SetActive(false);
+                    Ragdobj.gameObject.SetActive(true);
+
+
                     nvAgent.isStopped = true;
                     gameObject.tag = "Die";
                     yield return new WaitForSeconds(1.9f);
@@ -89,12 +100,14 @@ public class AI : MonoBehaviour
 
 			    case EnemyState.idle:     //기본상태
                     nvAgent.isStopped = true;       //정지
-                    //animator.SetBool("Walk", false);
+                    
+                    animator.SetBool("Walk", false);
                     break;
 
 			    case EnemyState.trace:    //추격상태
                     nvAgent.isStopped = false;      //이동
-                    //animator.SetBool("Walk", true);
+                   
+                    animator.SetBool("Walk", true);
                     nvAgent.destination = TargetPos;        //타겟 위치로 이동
 				    break;
 			}

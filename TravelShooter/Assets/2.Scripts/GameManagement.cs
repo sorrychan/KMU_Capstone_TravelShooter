@@ -28,7 +28,10 @@ public class GameManagement : MonoBehaviour
 
     IEnumerator TimeClear()
     {
-        yield return new WaitForSeconds(Time);     //Time만큼 시간이 지나면 클리어
-        isClear = 1;
+        if (IsStart == 1)
+        {
+            yield return new WaitForSeconds(Time);     //Time만큼 시간이 지나면 클리어
+            isClear = 1;
+        }
     }
 }

@@ -13,6 +13,8 @@ public class PowerShot : MonoBehaviour
     private Transform projectile;
     private Rigidbody projRbdy;
 
+    private bool IsHitTarget = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,20 +34,25 @@ public class PowerShot : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-       
+        projectile.GetComponent<Rigidbody>().useGravity = true;
         if (other.collider.tag == "PLANES")
         {
+            IsHitTarget = true;
             Destroy(Target, 1f);
             Destroy(gameObject, 1f);
             
         }
         else
         {
-
+            IsHitTarget = true;
             Destroy(Target, 1f);
             Destroy(gameObject, 3f);
-          
+           
         }
+    }
+    void DragObject()
+    {
+        projRbdy.velocity = projRbdy.velocity * dragValue;
     }
 
     // Update is called once per frame
@@ -55,9 +62,16 @@ public class PowerShot : MonoBehaviour
         {
             if (projectile.transform.position.z > Target.transform.position.z)
             {
-                projRbdy.velocity = projRbdy.velocity * dragValue;
+                IsHitTarget = true;
+                projectile.GetComponent<Rigidbody>().useGravity = true;
+                
                
             }
+            if (IsHitTarget)
+                DragObject();
+
+            if (projRbdy.velocity.y !=0)
+                projRbdy.velocity.Set(projRbdy.velocity.x,0, projRbdy.velocity.z);
         }
     }
 }
