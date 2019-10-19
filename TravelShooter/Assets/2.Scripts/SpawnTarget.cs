@@ -21,8 +21,8 @@ public class SpawnTarget : MonoBehaviour
     public Camera GameCamera;
 
     private bool IsMarkerSpawned = false;
-    [SerializeField]
-    private Canvas mainGameCanvas;
+    
+    public Canvas mainGameCanvas;
 
     //임시 타겟 생성용
     private GameObject newTarget;
