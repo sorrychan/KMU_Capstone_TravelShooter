@@ -37,7 +37,7 @@ public class AI : MonoBehaviour
 		StartCoroutine(this.MonsterAction());       //행동 코루틴 시작
 		enemyState = EnemyState.idle;               //적의 상태 초기화
         nvAgent.speed= Speed;                       //적의 속도 설정
-        gameObject.tag = "Enemy";                   //적의 테그 설정
+        //gameObject.tag = "Enemy";                   //적의 테그 설정
         TargetPos= Target.transform.position;       //타겟 위치
         TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
     }
@@ -71,6 +71,28 @@ public class AI : MonoBehaviour
             }
 		}
 	}
+    private void ChangeRagdoll()
+    {
+        CopyAnimCharacterTransformToRagdoll(Charobj.transform, Ragdobj.transform);
+        Charobj.gameObject.SetActive(false);
+        Ragdobj.gameObject.SetActive(true);
+
+    }
+
+
+    private void CopyAnimCharacterTransformToRagdoll(Transform origin, Transform rag)
+    {
+        for (int i = 0; i < origin.transform.childCount; i++)
+        {
+            if (origin.transform.childCount != 0)
+            {
+                CopyAnimCharacterTransformToRagdoll(origin.transform.GetChild(i), rag.transform.GetChild(i));
+            }
+            rag.transform.GetChild(i).localPosition = origin.transform.GetChild(i).localPosition;
+            rag.transform.GetChild(i).localRotation = origin.transform.GetChild(i).localRotation;
+
+        }
+    }
 
 	IEnumerator MonsterAction()     //적의 상태에 따른 행동
     {
@@ -81,13 +103,11 @@ public class AI : MonoBehaviour
                 case EnemyState.die:
                     //animator.SetBool("Walk", false);
                     //animator.SetBool("Die", true);
-                    Charobj.gameObject.SetActive(false);
-                    Ragdobj.gameObject.SetActive(true);
-
+                    ChangeRagdoll();
 
                     nvAgent.isStopped = true;
                     gameObject.tag = "Die";
-                    yield return new WaitForSeconds(1.9f);
+                    yield return new WaitForSeconds(3f);
                     Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
                     Gamemanager.GetComponent<GameManagement>().GameClearCheak();
                     Destroy(gameObject);

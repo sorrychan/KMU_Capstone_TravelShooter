@@ -52,18 +52,19 @@ public class PauseOption : MonoBehaviour
             mainCamera.GetComponent<GameManagement>().isFailed = 0;
         }
 
-        if (Campos.transform.position.z < -113 && Campos.GetComponent<GameCameraMovement>().IsMoveOn)
+        if (Campos.transform.position.z < -109 && Campos.GetComponent<GameCameraMovement>().IsMoveOn)
         {
             Campos.GetComponent<GameCameraMovement>().IsMoveOn = false;
             Campos.GetComponent<GameCameraMovement>().IsSizeWiden = true;
 
-
+            Campos.transform.position = new Vector3(Campos.transform.position.x, Campos.transform.position.y, Campos.transform.position.z + 10);
         }
-        if(mainCamera.orthographicSize >31 && Campos.GetComponent<GameCameraMovement>().IsSizeWiden)
+        if(mainCamera.orthographicSize >19 && Campos.GetComponent<GameCameraMovement>().IsSizeWiden)
         {
             Campos.GetComponent<GameCameraMovement>().IsSizeWiden = false;
             mainCanvas.enabled = true;
             mainCamera.GetComponent<GameManagement>().IsStart = 1;
+            
         }
 
     }

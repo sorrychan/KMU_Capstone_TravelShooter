@@ -12,8 +12,8 @@ public class GameCameraMovement : MonoBehaviour
     private Vector3 TargetPos;
     private Transform mytr;
 
-    private float firstSize = 17.2f;
-    private float SecondSize = 32f;
+    private float firstSize = 10f;
+    private float SecondSize = 20f;
 
     private float elapsed = 0.0f;
     
@@ -34,6 +34,7 @@ public class GameCameraMovement : MonoBehaviour
         if (IsSizeWiden)
         {
             elapsed += Time.deltaTime/ duration;
+            
             Camera.main.orthographicSize = Mathf.Lerp(firstSize, SecondSize, elapsed);
         }
     }

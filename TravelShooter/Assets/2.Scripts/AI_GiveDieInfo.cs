@@ -16,7 +16,8 @@ public class AI_GiveDieInfo : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
-           Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
+            Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
+            //Debug.Log(" Die");
         }
     }
 }
