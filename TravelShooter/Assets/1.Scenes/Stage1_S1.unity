@@ -245,6 +245,11 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 1517290590}
+    - target: {fileID: 8243198298199922902, guid: 0fd21ad0f8b28c448a799436984b986c,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0f231291534e8bd4a9720f9b45adc1f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd21ad0f8b28c448a799436984b986c, type: 3}
 --- !u!4 &80320585 stripped
@@ -4057,6 +4062,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 2195899512663048432, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0f231291534e8bd4a9720f9b45adc1f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}
 --- !u!1001 &2060594367
@@ -4141,6 +4151,11 @@ PrefabInstance:
       propertyPath: CollisionSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2246111895963724338, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2250577221916949918, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4171,11 +4186,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2246111895963724338, guid: d8d6377d48455b847bc63dde44572909,
+    - target: {fileID: 2195899512663048432, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0f231291534e8bd4a9720f9b45adc1f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}
 --- !u!4 &2137541674 stripped
@@ -4330,5 +4345,10 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 1517290590}
+    - target: {fileID: 2195899512663048432, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 0f231291534e8bd4a9720f9b45adc1f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}

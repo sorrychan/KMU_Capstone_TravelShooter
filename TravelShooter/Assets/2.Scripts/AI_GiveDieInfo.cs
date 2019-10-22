@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AI_GiveDieInfo : MonoBehaviour
 {
@@ -46,9 +47,11 @@ public class AI_GiveDieInfo : MonoBehaviour
 
         private void OnCollisionEnter(Collision collision)
         {
+            Parent.transform.position = gameObject.transform.position;
+             Ragdobj.transform.position = gameObject.transform.position;
             if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag=="Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
             {
-                Ragdobj.transform.position = Charobj.transform.position;
+                
                 Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
                 ChangeRagdoll();
                 
