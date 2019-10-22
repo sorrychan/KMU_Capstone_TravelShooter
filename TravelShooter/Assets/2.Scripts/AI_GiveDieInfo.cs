@@ -5,19 +5,54 @@ using UnityEngine;
 public class AI_GiveDieInfo : MonoBehaviour
 {
     public GameObject Parent;
+    //찬솔 적 애니메이션 및 래그돌 테스트용으로 2019.10.19
+    public GameObject Charobj;
+    public GameObject Ragdobj;
+
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void ChangeRagdoll()
     {
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+        
+        CopyAnimCharacterTransformToRagdoll(Charobj.transform, Ragdobj.transform);
+        Charobj.gameObject.SetActive(false);
+        Ragdobj.gameObject.SetActive(true);
+
+    }
+
+
+
+
+    private void CopyAnimCharacterTransformToRagdoll(Transform origin, Transform rag)
+    {
+        
+        for (int i = 0; i < origin.transform.childCount; i++)
         {
-            Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
-            //Debug.Log(" Die");
+            if (origin.transform.childCount != 0)
+            {
+                CopyAnimCharacterTransformToRagdoll(origin.transform.GetChild(i), rag.transform.GetChild(i));
+            }
+
+            rag.transform.GetChild(i).localPosition = origin.transform.GetChild(i).localPosition;
+            rag.transform.GetChild(i).localRotation = origin.transform.GetChild(i).localRotation;
+
         }
     }
-}
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag=="Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+            {
+                Ragdobj.transform.position = Charobj.transform.position;
+                Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
+                ChangeRagdoll();
+                
+                //Debug.Log(" Die");
+            }
+        }
+    }

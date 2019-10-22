@@ -22,10 +22,9 @@ public class AI : MonoBehaviour
     public EnemyPattern enemypattern;
     public float CollisionSpeed = 0.5f;
 
-    //찬솔 적 애니메이션 및 래그돌 테스트용으로 2019.10.19
     public GameObject Charobj;
     public GameObject Ragdobj;
-
+    public GameObject Spine;
 
 
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
@@ -71,43 +70,27 @@ public class AI : MonoBehaviour
             }
 		}
 	}
-    private void ChangeRagdoll()
-    {
-        CopyAnimCharacterTransformToRagdoll(Charobj.transform, Ragdobj.transform);
-        Charobj.gameObject.SetActive(false);
-        Ragdobj.gameObject.SetActive(true);
-
-    }
-
-
-    private void CopyAnimCharacterTransformToRagdoll(Transform origin, Transform rag)
-    {
-        for (int i = 0; i < origin.transform.childCount; i++)
-        {
-            if (origin.transform.childCount != 0)
-            {
-                CopyAnimCharacterTransformToRagdoll(origin.transform.GetChild(i), rag.transform.GetChild(i));
-            }
-            rag.transform.GetChild(i).localPosition = origin.transform.GetChild(i).localPosition;
-            rag.transform.GetChild(i).localRotation = origin.transform.GetChild(i).localRotation;
-
-        }
-    }
+  
 
 	IEnumerator MonsterAction()     //적의 상태에 따른 행동
     {
 		while (true)
 		{
-			switch (enemyState)
+            if (Ragdobj.activeSelf == true && Charobj.activeSelf == false)
+                enemyState = EnemyState.die;
+            switch (enemyState)
 			{
+
+
                 case EnemyState.die:
                     //animator.SetBool("Walk", false);
                     //animator.SetBool("Die", true);
-                    ChangeRagdoll();
-
+                    // 관절에 물리효과가 작동하는지 테스트, 생각보다 힘을 많이 줘야함
+                    //Spine.GetComponent<Rigidbody>().AddForce(0, 5000,5000);
+                   
                     nvAgent.isStopped = true;
                     gameObject.tag = "Die";
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(2f);
                     Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
                     Gamemanager.GetComponent<GameManagement>().GameClearCheak();
                     Destroy(gameObject);
@@ -157,7 +140,8 @@ public class AI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+        if((collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object" )&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)
+            //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
             enemyState = EnemyState.die;
         }

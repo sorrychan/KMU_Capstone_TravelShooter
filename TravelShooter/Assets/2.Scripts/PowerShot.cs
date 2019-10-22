@@ -29,24 +29,26 @@ public class PowerShot : MonoBehaviour
 
         //Debug.Log("Shoot: " + shoot);
         Vector3 direction = new Vector3(shoot.x,0, shoot.z);
-        projRbdy.AddForce(direction* (int)ShotSpeed*50f);
+        projRbdy.AddRelativeForce(direction* (int)ShotSpeed*500f);
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
-        projectile.GetComponent<Rigidbody>().useGravity = true;
+        //projectile.GetComponent<Rigidbody>().useGravity = true;
         if (other.collider.tag == "PLANES")
         {
-            IsHitTarget = true;
+            //IsHitTarget = true;
             Destroy(Target, 1f);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 4f);
             
         }
         else
         {
             IsHitTarget = true;
+            
+
             Destroy(Target, 1f);
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, 4f);
            
         }
     }
@@ -72,6 +74,9 @@ public class PowerShot : MonoBehaviour
 
             if (projRbdy.velocity.y !=0)
                 projRbdy.velocity.Set(projRbdy.velocity.x,0, projRbdy.velocity.z);
+            if(projRbdy.velocity.z <2)
+                gameObject.tag = "PLANES";
         }
+
     }
 }

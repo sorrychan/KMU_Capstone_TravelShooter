@@ -21,7 +21,7 @@ public class GameCameraMovement : MonoBehaviour
     void Start()
     {
         mytr = gameObject.transform;
-        TargetPos = new Vector3(mytr.position.x, mytr.position.y, (mytr.position.z - 20));
+        TargetPos = new Vector3(mytr.position.x, mytr.position.y, (mytr.position.z - 25));
         
     }
 

@@ -11,16 +11,11 @@ public class PauseOption : MonoBehaviour
     public GameObject Campos;
 
 
-    [SerializeField]
-    private Canvas mainCanvas;
-    [SerializeField]
-    private Canvas stopCanvas;
-    [SerializeField]
-    private Canvas WinCanvas;
-    [SerializeField]
-    private Canvas LoseCanvas;
-    [SerializeField]
-    private Canvas InfoCanvas;
+    public Canvas mainCanvas;
+    public Canvas stopCanvas;
+    public Canvas WinCanvas;
+    public Canvas LoseCanvas;
+    public Canvas InfoCanvas;
 
 
 
@@ -52,7 +47,7 @@ public class PauseOption : MonoBehaviour
             mainCamera.GetComponent<GameManagement>().isFailed = 0;
         }
 
-        if (Campos.transform.position.z < -109 && Campos.GetComponent<GameCameraMovement>().IsMoveOn)
+        if (Campos.transform.position.z < -114 && Campos.GetComponent<GameCameraMovement>().IsMoveOn)
         {
             Campos.GetComponent<GameCameraMovement>().IsMoveOn = false;
             Campos.GetComponent<GameCameraMovement>().IsSizeWiden = true;
