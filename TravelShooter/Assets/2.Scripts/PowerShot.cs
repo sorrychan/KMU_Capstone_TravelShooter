@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class PowerShot : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class PowerShot : MonoBehaviour
 
     private Transform projectile;
     private Rigidbody projRbdy;
+    private NavMeshObstacle obstacle;
 
     private bool IsHitTarget = false;
 
@@ -22,6 +25,7 @@ public class PowerShot : MonoBehaviour
         ShotSpeed = Target.GetComponent<TargetUIscript>().FiringPowerSave;
         projectile = gameObject.GetComponent<Transform>();
         projRbdy = gameObject.GetComponent<Rigidbody>();
+        obstacle = gameObject.GetComponent<NavMeshObstacle>();
 
         Vector3 newTargetPos = new Vector3(Target.transform.position.x, Target.transform.position.y, Target.transform.position.z) ;
        // Debug.Log("ntp: " + newTargetPos);
@@ -29,18 +33,19 @@ public class PowerShot : MonoBehaviour
 
         //Debug.Log("Shoot: " + shoot);
         Vector3 direction = new Vector3(shoot.x,0, shoot.z);
-        projRbdy.AddRelativeForce(direction* (int)ShotSpeed*500f);
+        projRbdy.AddRelativeForce(direction* (int)ShotSpeed*750f);
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        GravityOn();
         //projectile.GetComponent<Rigidbody>().useGravity = true;
         if (other.collider.tag == "PLANES")
         {
             //IsHitTarget = true;
             Destroy(Target, 1f);
             Destroy(gameObject, 4f);
-            
+           
         }
         else
         {
@@ -54,29 +59,41 @@ public class PowerShot : MonoBehaviour
     }
     void DragObject()
     {
+        obstacle.enabled = true;
         projRbdy.velocity = projRbdy.velocity * dragValue;
+    }
+    private void GravityOn()
+    {
+        projectile.GetComponent<Rigidbody>().useGravity = true;
     }
 
     // Update is called once per frame
-    void Update()
+    private void ShotProjectile()
     {
-        if (gameObject != null && Target!=null)
+        if (gameObject != null && Target != null)
         {
             if (projectile.transform.position.z > Target.transform.position.z)
             {
                 IsHitTarget = true;
-                projectile.GetComponent<Rigidbody>().useGravity = true;
-                
-               
+                //GravityOn();
+                //projectile.GetComponent<Rigidbody>().useGravity = true;
+
+
             }
             if (IsHitTarget)
+            {
                 DragObject();
+                //transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
 
-            if (projRbdy.velocity.y !=0)
-                projRbdy.velocity.Set(projRbdy.velocity.x,0, projRbdy.velocity.z);
-            if(projRbdy.velocity.z <2)
+            //if (projRbdy.velocity.y != 0)
+            //projRbdy.velocity.Set(projRbdy.velocity.x, 0, projRbdy.velocity.z);
+            if (projRbdy.velocity.z < 2.0f)
                 gameObject.tag = "PLANES";
         }
-
+    }
+    void Update()
+    {
+        ShotProjectile();
     }
 }

@@ -89,7 +89,8 @@ public class AI : MonoBehaviour
                     //Spine.GetComponent<Rigidbody>().AddForce(0, 5000,5000);
                    
                     nvAgent.isStopped = true;
-                    gameObject.tag = "Die";
+                    
+                    //gameObject.tag = "Die";
                     yield return new WaitForSeconds(2f);
                     Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
                     Gamemanager.GetComponent<GameManagement>().GameClearCheak();
@@ -138,12 +139,12 @@ public class AI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if((collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object" )&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)
-            //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
-        {
-            enemyState = EnemyState.die;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if((collision.gameObject.tag=="Bullet"|| collision.gameObject.tag == "Object" )&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)
+    //        //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+    //    {
+    //        enemyState = EnemyState.die;
+    //    }
+    //}
 }
