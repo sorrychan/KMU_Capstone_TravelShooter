@@ -26,6 +26,8 @@ public class DragShot : MonoBehaviour
      public float maxDistance = 3f;
      [Header("Power")]
      public float power;
+    [Header("Fire GuideLine")]
+    public GameObject guide;
 
 
      private NavMeshObstacle obstacle;
@@ -46,6 +48,7 @@ public class DragShot : MonoBehaviour
          obstacle.enabled = true;
          rbody.velocity = rbody.velocity * dragValue;
      }
+
      private void GravityOn()
      {
         rbody.useGravity = true;
@@ -92,13 +95,17 @@ public class DragShot : MonoBehaviour
             shootDirection = Vector3.Normalize(currentMousePosition - transform.position);
             
             line.SetPosition(1, temp);
+
+            guide.GetComponent<PreviewArch>().Preview(gameObject.transform.position, shootDirection* shootPower/5 * -1);
         }
-    }
+    }   
 
     private void OnMouseUp()
     {
+        guide.GetComponent<LineRenderer>().enabled = false;
         GravityOn();
-        Vector3 push = shootDirection * shootPower * -1; 
+        Vector3 push = shootDirection * shootPower * -1;
+        push.y = 0;
         GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
         line.enabled = false; //remove the line
         IsShotProjectile = true;

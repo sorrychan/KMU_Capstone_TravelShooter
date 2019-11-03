@@ -12,8 +12,8 @@ public class GameCameraMovement : MonoBehaviour
     private Vector3 TargetPos;
     private Transform mytr;
 
-    private float firstSize = 10f;
-    private float SecondSize = 20f;
+    private float firstSize = 16f;
+    private float SecondSize = 25f;
 
     private float elapsed = 0.0f;
     
@@ -21,7 +21,7 @@ public class GameCameraMovement : MonoBehaviour
     void Start()
     {
         mytr = gameObject.transform;
-        TargetPos = new Vector3(mytr.position.x, mytr.position.y, (mytr.position.z - 25));
+        TargetPos = new Vector3(mytr.position.x, mytr.position.y, (mytr.position.z - 20));
         
     }
 
