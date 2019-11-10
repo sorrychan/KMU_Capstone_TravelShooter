@@ -29,9 +29,9 @@ public class Objects : MonoBehaviour
             switch (kind)
             {
                 case Kinds.Fall:
-                    transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
+                    //transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
                     rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
-                    rb.velocity = new Vector3(10, 0, 0);
+                    rb.velocity = new Vector3(5, 0, 0);
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;

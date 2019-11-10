@@ -7,7 +7,7 @@ public class PreviewArch : MonoBehaviour
 {
 
     public float predictionSeconds = 4f;
-    public int subdivisionCount = 20;
+    public int subdivisionCount = 5;
 
     LineRenderer _line;
     Vector3[] _points;
