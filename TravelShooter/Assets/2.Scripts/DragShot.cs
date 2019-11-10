@@ -46,6 +46,7 @@ public class DragShot : MonoBehaviour
      void DragObject()
      {
          obstacle.enabled = true;
+        
          rbody.velocity = rbody.velocity * dragValue;
      }
 
@@ -115,23 +116,25 @@ public class DragShot : MonoBehaviour
     private void Update()
     {
         if (IsHitTarget)
+        {
             DragObject();
 
-        //if (rbody.velocity.z < 2.0f)
-        //    gameObject.tag = "PLANES";
+            if (rbody.velocity.z < 2.0f)
+                gameObject.tag = "PLANES";
+        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+
         if (other.collider.tag == "PLANES")
         {
-            IsHitTarget = true;
-            
             Destroy(gameObject, 4f);
 
         }
         else
         {
+            IsHitTarget = true;
             Destroy(gameObject, 4f);
 
         }
