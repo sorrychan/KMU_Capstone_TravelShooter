@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - UI_Target
+  - PLANES
+  - UI_TempTarget
+  - AngleDP
   - Bullet
   - Enemy
   - Die
@@ -18,9 +22,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - StagePlane
+  - DefendBase
+  - Projectiles
   - 
   - 
   - 

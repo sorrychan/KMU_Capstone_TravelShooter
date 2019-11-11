@@ -7,6 +7,7 @@ public class Objects : MonoBehaviour
 {
     public int isActivation = 0;           //활성화 되었는가
     public Material capMaterial;
+    public int ExpForce = 700;
 
     public enum Kinds
     {
@@ -28,9 +29,9 @@ public class Objects : MonoBehaviour
             switch (kind)
             {
                 case Kinds.Fall:
-                    transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
+                    //transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
                     rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
-                    rb.velocity = new Vector3(10, 0, 0);
+                    rb.velocity = new Vector3(5, 0, 0);
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
@@ -53,7 +54,7 @@ public class Objects : MonoBehaviour
                     {
                         obj.gameObject.AddComponent<Rigidbody>();
                         rb = obj.GetComponent<Rigidbody>();
-                        rb.AddExplosionForce(700, transform.position, 10, 2);       //힘, 위치, 반경, 위로 튀는 힘
+                        rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
                     }
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
@@ -74,8 +75,8 @@ public class Objects : MonoBehaviour
                     rb = gameObjects[1].gameObject.GetComponent<Rigidbody>();
                     rb.velocity = gameObjects[0].gameObject.GetComponent<Rigidbody>().velocity;
                     rb.mass = gameObjects[0].gameObject.GetComponent<Rigidbody>().mass;
-
-                    EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
+                    gameObject.tag = "Bullet";
+                   // EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
                     
                     //isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
                     break;

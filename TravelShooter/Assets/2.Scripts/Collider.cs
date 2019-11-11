@@ -6,7 +6,7 @@ public class Collider : MonoBehaviour
 {
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        if(other.tag=="Bullet"||other.tag=="Object")
+        if(other.gameObject.tag=="Bullet" || other.gameObject.tag == "Object")
         {
             Destroy(other);
         }
