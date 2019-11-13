@@ -29,10 +29,11 @@ public class DragShot : MonoBehaviour
     [Header("Fire GuideLine")]
     public GameObject guide;
 
-
      private NavMeshObstacle obstacle;
      private Rigidbody rbody;
     public float dragValue = 0.9f;
+    public float shotposY = 0.5f;
+
     private bool IsHitTarget = false;
     private bool IsShotProjectile = false;
 
@@ -89,7 +90,7 @@ public class DragShot : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayers))
             {
-                currentMousePosition = new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z);
+                currentMousePosition = new Vector3(hitInfo.point.x, transform.position.y-shotposY, hitInfo.point.z);
             }
 
             
@@ -103,13 +104,16 @@ public class DragShot : MonoBehaviour
 
     private void OnMouseUp()
     {
-        guide.GetComponent<LineRenderer>().enabled = false;
-        GravityOn();
-        Vector3 push = shootDirection * shootPower * -1;
-        push.y = 0;
-        GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
-        line.enabled = false; //remove the line
-        IsShotProjectile = true;
+        if (!IsShotProjectile)
+        {
+            guide.GetComponent<LineRenderer>().enabled = false;
+            GravityOn();
+            Vector3 push = shootDirection * shootPower * -1;
+            //push.y = 0;
+            GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
+            line.enabled = false; //remove the line
+            IsShotProjectile = true;
+        }
     }
 
 
