@@ -1306,6 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivation: 0
   capMaterial: {fileID: 0}
+  ExpForce: 700
   kind: 2
 --- !u!1 &2107612380510410185
 GameObject:
