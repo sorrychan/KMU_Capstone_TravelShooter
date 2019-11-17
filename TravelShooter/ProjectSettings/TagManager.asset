@@ -46,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: GuideLine
+    uniqueID: 3178940319
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

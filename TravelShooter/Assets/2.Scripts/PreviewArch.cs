@@ -15,7 +15,8 @@ public class PreviewArch : MonoBehaviour
     void Awake()
     {
         _line = GetComponent<LineRenderer>();
-        _line.SetVertexCount(subdivisionCount);
+        _line.positionCount = subdivisionCount;
+        //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
     }
 
