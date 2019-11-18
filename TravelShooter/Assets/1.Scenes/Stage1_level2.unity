@@ -8811,5 +8811,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3827854373290878112, guid: 5d855b69e3782de44888a89b3a957f12,
+        type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 2538094530998196077, guid: e0908cc47079b994aa460559c495b11b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
