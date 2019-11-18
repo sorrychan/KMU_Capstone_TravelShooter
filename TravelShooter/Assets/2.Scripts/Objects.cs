@@ -18,11 +18,11 @@ public class Objects : MonoBehaviour
         Effect,     //투사체에 영향을 주는 물체
         Cut         //투사체를 자르는 물체
     }
-
+    
     public Kinds kind;
 
     Rigidbody rb;
-
+    
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.gameObject.tag == "Bullet" && isActivation == 0)      //총알의 태그 = "Bullet", 활성화 되지 않았을 경우
@@ -46,12 +46,12 @@ public class Objects : MonoBehaviour
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
-
+                    
                 case Kinds.Exp:
                     Instantiate(particle,this.gameObject.transform);
                     //Transform[] ExpObjectList = gameObject.GetComponentsInChildren<Transform>();
                     UnityEngine.Collider[] ExpObjectLists = Physics.OverlapSphere(transform.position, 10.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
-
+                    
                     foreach (UnityEngine.Collider obj in ExpObjectLists)
                     {
                         if (obj.GetComponent<Rigidbody>() == null)
@@ -61,8 +61,10 @@ public class Objects : MonoBehaviour
                         rb = obj.GetComponent<Rigidbody>();
                         rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
                     }
-                    
+                    Destroy(this.gameObject,3.0f);
+
                     isActivation = 1;       //상호작용 후 물체는 활성화
+                    
                     break;
 
                 case Kinds.Effect:
