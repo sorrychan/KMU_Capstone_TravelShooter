@@ -12,9 +12,11 @@ public class AI_GiveDieInfo : MonoBehaviour
     RaycastHit hit;
     public float MaxDistance = 3f;
 
+    [Header("파티클 선택용")]
+    public GameObject particle;
 
     private Vector3 rayposition;
-
+    private bool IsOnceHit = false; //파티클 한번만
 
     // Start is called before the first frame update
     void Start()
@@ -73,11 +75,18 @@ public class AI_GiveDieInfo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Vector3 newPos = transform.position;
+
         Parent.transform.position = gameObject.transform.position;
         Ragdobj.transform.position = gameObject.transform.position;
         if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
-
+            if (!IsOnceHit)
+            {
+                newPos.y += 2.0f;
+                Instantiate(particle, newPos, Quaternion.identity);
+                IsOnceHit = true;
+            }
             HitByProjectile();
 
             //Debug.Log(" Die");
@@ -85,11 +94,18 @@ public class AI_GiveDieInfo : MonoBehaviour
     }
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
+        Vector3 newPos = transform.position;
+
         Parent.transform.position = gameObject.transform.position;
         Ragdobj.transform.position = gameObject.transform.position;
         if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Object" || other.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
-
+            if (!IsOnceHit)
+            {
+                newPos.y += 2.0f;
+                Instantiate(particle, newPos, Quaternion.identity);
+                IsOnceHit = true;
+            }
             HitByProjectile();
 
             //Debug.Log(" Die");

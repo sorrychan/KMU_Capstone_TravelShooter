@@ -8728,11 +8728,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Rock (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7556565892452333258, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7556565892452333270, guid: 5d855b69e3782de44888a89b3a957f12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8786,29 +8781,6 @@ PrefabInstance:
     - target: {fileID: 7556565892452333270, guid: 5d855b69e3782de44888a89b3a957f12,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54205603479608526, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54205603479608526, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 208715916844839840, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 685502493, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
-      propertyPath: power
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792424872, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
