@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Die
   - Object
+  - ObjectSelect
   layers:
   - Default
   - TransparentFX
