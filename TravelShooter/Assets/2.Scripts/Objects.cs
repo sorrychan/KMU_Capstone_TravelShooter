@@ -8,6 +8,7 @@ public class Objects : MonoBehaviour
     public int isActivation = 0;           //활성화 되었는가
     public Material capMaterial;
     public int ExpForce = 700;
+    public GameObject particle;
 
     public enum Kinds
     {
@@ -20,6 +21,9 @@ public class Objects : MonoBehaviour
 
     public Kinds kind;
 
+    [Header("+값은 왼쪽 - 값은 오른쪽, 기본 설정 5")]
+    public float FallDirection = 5;
+
     Rigidbody rb;
 
     private void OnTriggerEnter(UnityEngine.Collider other)
@@ -31,14 +35,14 @@ public class Objects : MonoBehaviour
                 case Kinds.Fall:
                     //transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
                     rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
-                    rb.velocity = new Vector3(5, 0, 0);
+                    rb.velocity = new Vector3(FallDirection, 0, 0);
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
 
                 case Kinds.Break:
                     Transform[] BreakObjectList = gameObject.GetComponentsInChildren<Transform>();
-                    foreach(Transform obj in BreakObjectList)
+                    foreach (Transform obj in BreakObjectList)
                     {
                         obj.gameObject.AddComponent<Rigidbody>();
                     }
@@ -47,16 +51,20 @@ public class Objects : MonoBehaviour
                     break;
 
                 case Kinds.Exp:
-                    Transform[] ExpObjectList = gameObject.GetComponentsInChildren<Transform>();
-                    //Collider[] ExpObjectLists = Physics.OverlapSphere(transform.position, 10.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
+                    Instantiate(particle,this.gameObject.transform);
+                    //Transform[] ExpObjectList = gameObject.GetComponentsInChildren<Transform>();
+                    UnityEngine.Collider[] ExpObjectLists = Physics.OverlapSphere(transform.position, 10.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
 
-                    foreach (Transform obj in ExpObjectList)
+                    foreach (UnityEngine.Collider obj in ExpObjectLists)
                     {
-                        obj.gameObject.AddComponent<Rigidbody>();
+                        if (obj.GetComponent<Rigidbody>() == null)
+                        {
+                            obj.gameObject.AddComponent<Rigidbody>();
+                        }
                         rb = obj.GetComponent<Rigidbody>();
                         rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
                     }
-
+                    
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
 
@@ -68,7 +76,7 @@ public class Objects : MonoBehaviour
 
                 case Kinds.Cut:
                     GameObject[] gameObjects = MeshCut.Cut(other.gameObject, other.gameObject.transform.position, Vector3.right, capMaterial);
-                    
+
                     gameObjects[1].AddComponent<BoxCollider>();
                     gameObjects[1].AddComponent<Rigidbody>();
 
@@ -76,8 +84,8 @@ public class Objects : MonoBehaviour
                     rb.velocity = gameObjects[0].gameObject.GetComponent<Rigidbody>().velocity;
                     rb.mass = gameObjects[0].gameObject.GetComponent<Rigidbody>().mass;
                     gameObject.tag = "Bullet";
-                   // EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
-                    
+                    // EditorUtility.CopySerialized(gameObjects[0], gameObjects[1]);
+
                     //isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
                     break;
             }

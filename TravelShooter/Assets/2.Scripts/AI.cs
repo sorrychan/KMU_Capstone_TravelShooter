@@ -26,7 +26,6 @@ public class AI : MonoBehaviour
     public GameObject Ragdobj;
     public GameObject Spine;
 
-
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
 	{
 		EnemyTr = GetComponent<Transform>();        //자신의 좌표를 받아옴
@@ -39,6 +38,8 @@ public class AI : MonoBehaviour
         //gameObject.tag = "Enemy";                   //적의 테그 설정
         TargetPos= Target.transform.position;       //타겟 위치
         TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
+
+        
     }
 
 	IEnumerator CheckMonsterState()     //적의 상태 체크
@@ -76,6 +77,8 @@ public class AI : MonoBehaviour
     {
 		while (true)
 		{
+
+
             if (Ragdobj.activeSelf == true && Charobj.activeSelf == false)
                 enemyState = EnemyState.die;
             switch (enemyState)
@@ -104,8 +107,9 @@ public class AI : MonoBehaviour
 
 			    case EnemyState.idle:     //기본상태
                     nvAgent.isStopped = true;       //정지
-                    
-                    animator.SetBool("Walk", false);
+
+                        animator.SetBool("Walk", false);
+
                     break;
 
 			    case EnemyState.trace:    //추격상태

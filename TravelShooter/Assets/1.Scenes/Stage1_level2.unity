@@ -111,7 +111,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1b159e1bf7a3ed445a8728fa12a6108d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2a355dc5f6875494faea5f403fa8efbd, type: 2}
 --- !u!1001 &52338325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5514,7 +5514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565092922726348, guid: 38b56a12332171545a8891fb91131031, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4565092922726348, guid: 38b56a12332171545a8891fb91131031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5545,6 +5545,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fd9e273c4dc19434295f097ad21244e6, type: 2}
+    - target: {fileID: 33917194154679646, guid: 38b56a12332171545a8891fb91131031,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 9fb40de85ff0d0e48b9f250ec53c11de, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b56a12332171545a8891fb91131031, type: 3}
 --- !u!4 &1488203657 stripped
@@ -8518,7 +8523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408048952175500, guid: 4b0dd8d9ce8ef2b4ba4212934b7dc629, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4408048952175500, guid: 4b0dd8d9ce8ef2b4ba4212934b7dc629, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8723,11 +8728,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile_Rock (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7556565892452333258, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7556565892452333270, guid: 5d855b69e3782de44888a89b3a957f12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8781,29 +8781,6 @@ PrefabInstance:
     - target: {fileID: 7556565892452333270, guid: 5d855b69e3782de44888a89b3a957f12,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54205603479608526, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54205603479608526, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 208715916844839840, guid: 5d855b69e3782de44888a89b3a957f12,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 685502493, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
-      propertyPath: power
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792424872, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
