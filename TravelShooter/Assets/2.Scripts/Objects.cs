@@ -21,6 +21,9 @@ public class Objects : MonoBehaviour
 
     public Kinds kind;
 
+    [Header("+값은 왼쪽 - 값은 오른쪽, 기본 설정 5")]
+    public float FallDirection = 5;
+
     Rigidbody rb;
 
     private void OnTriggerEnter(UnityEngine.Collider other)
@@ -32,7 +35,7 @@ public class Objects : MonoBehaviour
                 case Kinds.Fall:
                     //transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
                     rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
-                    rb.velocity = new Vector3(5, 0, 0);
+                    rb.velocity = new Vector3(FallDirection, 0, 0);
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
