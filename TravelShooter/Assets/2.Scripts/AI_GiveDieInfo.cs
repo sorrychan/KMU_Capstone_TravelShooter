@@ -14,6 +14,8 @@ public class AI_GiveDieInfo : MonoBehaviour
 
     [Header("파티클 선택용")]
     public GameObject particle;
+    [Header("충돌속도가 이 값 이하면 충돌판정 x")]
+    public float CollisionSpeed = 2.0f;
 
     private Vector3 rayposition;
     private bool IsOnceHit = false; //파티클 한번만
@@ -98,7 +100,7 @@ public class AI_GiveDieInfo : MonoBehaviour
 
         Parent.transform.position = gameObject.transform.position;
         Ragdobj.transform.position = gameObject.transform.position;
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Object" || other.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+        if ((other.gameObject.tag == "Bullet" || other.gameObject.tag == "Object" || other.gameObject.tag == "Die")&&other.GetComponent<Rigidbody>().velocity.magnitude > CollisionSpeed)      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
         {
             if (!IsOnceHit)
             {

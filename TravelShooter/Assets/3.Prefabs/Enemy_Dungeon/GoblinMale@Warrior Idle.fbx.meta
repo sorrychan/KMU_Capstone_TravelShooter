@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 355325cb94a7d814a9985fae083e9c08
+guid: 5fa4fbab835a18547b4ef1c468759b0b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -14,22 +14,22 @@ ModelImporter:
     100016: eyes
     100018: foot_l
     100020: foot_r
-    100022: hand_l
-    100024: hand_r
-    100026: head
-    100028: lowerarm_l
-    100030: lowerarm_r
-    100032: middle_01_l
-    100034: middle_01_r
-    100036: middle_02_l
-    100038: middle_02_r
-    100040: neck_01
-    100042: pelvis
-    100044: root
-    100046: spine_01
-    100048: spine_02
-    100050: spine_03
-    100052: //RootNode
+    100022: //RootNode
+    100024: hand_l
+    100026: hand_r
+    100028: head
+    100030: lowerarm_l
+    100032: lowerarm_r
+    100034: middle_01_l
+    100036: middle_01_r
+    100038: middle_02_l
+    100040: middle_02_r
+    100042: neck_01
+    100044: pelvis
+    100046: root
+    100048: spine_01
+    100050: spine_02
+    100052: spine_03
     100054: thigh_l
     100056: thigh_r
     100058: thumb_01_l
@@ -53,22 +53,22 @@ ModelImporter:
     400016: eyes
     400018: foot_l
     400020: foot_r
-    400022: hand_l
-    400024: hand_r
-    400026: head
-    400028: lowerarm_l
-    400030: lowerarm_r
-    400032: middle_01_l
-    400034: middle_01_r
-    400036: middle_02_l
-    400038: middle_02_r
-    400040: neck_01
-    400042: pelvis
-    400044: root
-    400046: spine_01
-    400048: spine_02
-    400050: spine_03
-    400052: //RootNode
+    400022: //RootNode
+    400024: hand_l
+    400026: hand_r
+    400028: head
+    400030: lowerarm_l
+    400032: lowerarm_r
+    400034: middle_01_l
+    400036: middle_01_r
+    400038: middle_02_l
+    400040: middle_02_r
+    400042: neck_01
+    400044: pelvis
+    400046: root
+    400048: spine_01
+    400050: spine_02
+    400052: spine_03
     400054: thigh_l
     400056: thigh_r
     400058: thumb_01_l
@@ -83,10 +83,8 @@ ModelImporter:
     400076: upperarm_r
     2100000: MiniColour6
     4300000: Chr_Dungeon_GoblinMale_01
-    7400000: Take 001
-    7400002: Walk
-    7400004: Swagger Walk
-    7400006: Swagger Walk
+    7400000: Warrior Idle
+    7400002: Warrior Idle
     9500000: //RootNode
     13700000: Chr_Dungeon_GoblinMale_01
     2186277476908879412: ImportLogs
@@ -124,10 +122,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Swagger Walk
+      name: Warrior Idle
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 167
+      firstFrame: 152
+      lastFrame: 680
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -135,7 +133,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
