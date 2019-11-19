@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 8850762248821700403}
   m_Layer: 0
   m_Name: Fall
-  m_TagString: Object
+  m_TagString: PLANES
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   ExpForce: 700
   particle: {fileID: 0}
   kind: 0
+  FallDirection: 5
 --- !u!1001 &398279459
 PrefabInstance:
   m_ObjectHideFlags: 0
