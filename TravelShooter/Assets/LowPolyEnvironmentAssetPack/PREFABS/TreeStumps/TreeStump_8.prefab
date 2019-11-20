@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4226342666815186}
   - component: {fileID: 33592106610718244}
   - component: {fileID: 23096321825618680}
-  - component: {fileID: 64300874138936124}
-  - component: {fileID: 1163222464}
+  - component: {fileID: 5708031959629301036}
+  - component: {fileID: 1544292957}
+  - component: {fileID: 3932876164518147987}
   m_Layer: 11
   m_Name: TreeStump_8
   m_TagString: Object
@@ -79,21 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &64300874138936124
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692449288938202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 85754286ad817d94e96b42d3bde1559b, type: 3}
---- !u!54 &1163222464
+--- !u!54 &5708031959629301036
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,3 +96,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1544292957
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692449288938202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.33
+  m_Height: 5.21
+  m_Direction: 1
+  m_Center: {x: 0.06, y: 0.13557184, z: 0.03}
+--- !u!114 &3932876164518147987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692449288938202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d98be19294bbc448ed919fc54bf6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeadCount: 5

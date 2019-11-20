@@ -18,7 +18,13 @@ public class CameraMoveControl : MonoBehaviour
     
 
     private string Stages =  "Stage1_";
-    
+
+    private void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        Screen.SetResolution(600, 960, true);
+    }
 
     // Start is called before the first frame update
     void Start()

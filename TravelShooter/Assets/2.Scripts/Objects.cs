@@ -34,6 +34,7 @@ public class Objects : MonoBehaviour
             {
                 case Kinds.Fall:
                     //transform.GetChild(0).gameObject.AddComponent<Rigidbody>();     //쓰러지는 물체 = (0)번쨰 자식 오브젝트
+
                     rb = transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
                     rb.velocity = new Vector3(FallDirection, 0, 0);
 
@@ -52,19 +53,27 @@ public class Objects : MonoBehaviour
 
                 case Kinds.Exp:
                     Instantiate(particle,this.gameObject.transform);
-                    //Transform[] ExpObjectList = gameObject.GetComponentsInChildren<Transform>();
-                    UnityEngine.Collider[] ExpObjectLists = Physics.OverlapSphere(transform.position, 10.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
+                    Transform[] ChildExpObjectList = gameObject.GetComponentsInChildren<Transform>();
 
-                    foreach (UnityEngine.Collider obj in ExpObjectLists)
+                    foreach (UnityEngine.Transform obj in ChildExpObjectList)
                     {
                         if (obj.GetComponent<Rigidbody>() == null)
                         {
                             obj.gameObject.AddComponent<Rigidbody>();
                         }
-                        rb = obj.GetComponent<Rigidbody>();
-                        rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
                     }
+
+                    UnityEngine.Collider[] ExpObjectLists = Physics.OverlapSphere(transform.position, 5.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
                     
+                    foreach (UnityEngine.Collider obj in ExpObjectLists)
+                    {
+                        if (obj.GetComponent<Rigidbody>() != null)
+                        {
+                            rb = obj.GetComponent<Rigidbody>();
+                            rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
+                        }
+                    }
+
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     break;
 

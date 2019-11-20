@@ -50,7 +50,7 @@ LightmapSettings:
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -320,7 +320,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5081,7 +5081,7 @@ RectTransform:
   m_GameObject: {fileID: 1151070519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 88648590}
   - {fileID: 519220076}
@@ -5722,7 +5722,7 @@ Canvas:
   m_GameObject: {fileID: 1250797257}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1517290595}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -6671,7 +6671,7 @@ GameObject:
   m_Layer: 0
   m_Name: GamePlayCamera
   m_TagString: MainCamera
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9652,5 +9652,80 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 1517290590}
+    - target: {fileID: 2800902831275368284, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286113106457957890, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.020262003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623777940034262937, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993218410599382693, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000023841855
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203701298580913687, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849702939086841504, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.3918824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849702939086841504, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.024467617
+      objectReference: {fileID: 0}
+    - target: {fileID: 124727297713766472, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.39188197
+      objectReference: {fileID: 0}
+    - target: {fileID: 124727297713766472, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.024467617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566582692897605927, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0037783086
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125729380965490595, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.26757234
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125729380965490595, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.011673653
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125729380965490595, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000007105991
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154069180138575654, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.01167376
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154069180138575654, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000074505806
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}

@@ -9,6 +9,8 @@ public class PreviewArch : MonoBehaviour
     public float predictionSeconds = 4f;
     public int subdivisionCount = 5;
 
+    int state;
+
     LineRenderer _line;
     Vector3[] _points;
 
@@ -18,10 +20,24 @@ public class PreviewArch : MonoBehaviour
         _line.positionCount = subdivisionCount;
         //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
+
+        
     }
 
-    public void Preview(Vector3 startPosition, Vector3 initialVelocity)
+        public void Preview(Vector3 startPosition, Vector3 initialVelocity)
     {
+
+        switch (state)
+        {
+            case 1:
+                predictionSeconds = 0.1f;
+                break;
+            case 2:
+                predictionSeconds = 1f;
+                break;
+        }
+
+
         float timeStep = predictionSeconds / _points.Length;
         for (int i = 0; i < _points.Length; i++)
         {
