@@ -60,10 +60,20 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        string name = EventSystem.current.currentSelectedGameObject.name;
-        SceneManager.LoadScene(Stages + name);
+        if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+        {
+            string name = EventSystem.current.currentSelectedGameObject.name;
+            SceneManager.LoadScene(Stages + name);
+        }
     }
 
-
+    public void QuitGmae()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
 }

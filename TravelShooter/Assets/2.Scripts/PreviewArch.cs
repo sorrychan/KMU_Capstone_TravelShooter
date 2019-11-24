@@ -6,10 +6,15 @@ using UnityEngine;
 public class PreviewArch : MonoBehaviour
 {
 
+    private int state = -1;
+
+    [SerializeField]
+    private GameObject pauseOptionScript;
+
     public float predictionSeconds = 4f;
     public int subdivisionCount = 5;
 
-    int state;
+   // int state = -1;
 
     LineRenderer _line;
     Vector3[] _points;
@@ -21,18 +26,19 @@ public class PreviewArch : MonoBehaviour
         //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
 
+        pauseOptionScript = GameObject.Find("GameManager");
         
     }
 
-        public void Preview(Vector3 startPosition, Vector3 initialVelocity)
+     public void Preview(Vector3 startPosition, Vector3 initialVelocity)
     {
-
+        state = pauseOptionScript.GetComponent<PauseOption>().PreviewLineState;
         switch (state)
         {
-            case 1:
+            case -1:
                 predictionSeconds = 0.1f;
                 break;
-            case 2:
+            case 1:
                 predictionSeconds = 1f;
                 break;
         }

@@ -17,31 +17,53 @@ public class PauseOption : MonoBehaviour
     public Canvas LoseCanvas;
     public Canvas InfoCanvas;
 
+    public GameObject Item1;
 
+    //아이템 관리
+    public int PreviewLineState = -1;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
-        mainCanvas.enabled = false;
+        mainCanvas.enabled = true;
         stopCanvas.enabled = false;
         WinCanvas.enabled = false;
         LoseCanvas.enabled = false;
-       
-        
 
+
+        Item1 = GameObject.Find("CheckItem1");
     }
+
+    //아이템1 체크 관리
+    public void CheckPreviewLineState()
+    {
+        if (!gameObject.GetComponent<GoldManagement>().isGoldBelowZero)
+        {
+            if (!Item1.activeSelf)
+                Item1.SetActive(true);
+            else
+                Item1.SetActive(false);
+            PreviewLineState *= -1;
+        }
+    }
+
+
     private void Update()
     {
         if(mainCamera.GetComponent<GameManagement>().isClear == 1)
         {
+            Time.timeScale = 0;
             WinCanvas.enabled = true;
+            gameObject.GetComponent<GoldManagement>().StageClearRewardGold();
+
             mainCanvas.enabled = false;
             mainCamera.GetComponent<GameManagement>().isClear = 0;
         }
         else if (mainCamera.GetComponent<GameManagement>().isFailed== 1)
         {
+            Time.timeScale = 0;
             LoseCanvas.enabled = true;
             mainCanvas.enabled = false;
             mainCamera.GetComponent<GameManagement>().isFailed = 0;
@@ -66,6 +88,11 @@ public class PauseOption : MonoBehaviour
 
     public void StageInfo()
     {
+        if(Item1!=null &&Item1.activeSelf)
+        {
+            Debug.Log("골드 소모 체크");
+            gameObject.GetComponent<GoldManagement>().UseGoldForGuideLine();
+        }
         Campos.GetComponent<GameCameraMovement>().IsMoveOn = true;
         InfoCanvas.enabled = false;
     }

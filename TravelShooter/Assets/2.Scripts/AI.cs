@@ -26,6 +26,12 @@ public class AI : MonoBehaviour
     public GameObject Ragdobj;
     public GameObject Spine;
 
+    private void Start()
+    {
+        if (Gamemanager == null)
+            Gamemanager = GameObject.Find("GamePlayCamera");
+    }
+
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
 	{
 		EnemyTr = GetComponent<Transform>();        //자신의 좌표를 받아옴

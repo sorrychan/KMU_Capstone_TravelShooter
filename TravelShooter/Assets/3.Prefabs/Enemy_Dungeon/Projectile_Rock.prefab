@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ed87cdb8b4634d85925c52e7607f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predictionSeconds: 1
+  pauseOptionScript: {fileID: 0}
+  predictionSeconds: 0.1
   subdivisionCount: 3
 --- !u!1 &7556565892452333258
 GameObject:
