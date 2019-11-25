@@ -166,12 +166,7 @@ GameObject:
   - component: {fileID: 54205603479608526}
   - component: {fileID: 208715916844839840}
   - component: {fileID: 685502493}
-<<<<<<< HEAD
-  - component: {fileID: 613260109}
-  - component: {fileID: 3827854373290878112}
-=======
   - component: {fileID: 314206259054568649}
->>>>>>> CsK
   m_Layer: 11
   m_Name: Projectile_Rock
   m_TagString: Bullet
@@ -406,26 +401,6 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-<<<<<<< HEAD
-  m_UseWorldSpace: 1
-  m_Loop: 0
---- !u!114 &3827854373290878112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7556565892452333258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56cad67fe9861d14bb179b671e65082e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHit: 0
-  particle: {fileID: 2538094530998196077, guid: e0908cc47079b994aa460559c495b11b,
-    type: 3}
-=======
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
   m_Emitting: 1
->>>>>>> CsK

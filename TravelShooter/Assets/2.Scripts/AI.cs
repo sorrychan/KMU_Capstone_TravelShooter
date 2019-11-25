@@ -25,7 +25,6 @@ public class AI : MonoBehaviour
     public GameObject Charobj;
     public GameObject Ragdobj;
     public GameObject Spine;
-    public GameObject Particle;
 
     private void Start()
     {
@@ -97,7 +96,7 @@ public class AI : MonoBehaviour
                     //animator.SetBool("Die", true);
                     // 관절에 물리효과가 작동하는지 테스트, 생각보다 힘을 많이 줘야함
                     //Spine.GetComponent<Rigidbody>().AddForce(0, 5000,5000);
-                    Instantiate(Particle, this.gameObject.transform);
+                   
                     nvAgent.isStopped = true;
                     
                     //gameObject.tag = "Die";

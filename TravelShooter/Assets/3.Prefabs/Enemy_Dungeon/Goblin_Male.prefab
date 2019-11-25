@@ -80,8 +80,6 @@ MonoBehaviour:
   Charobj: {fileID: 2246594082322780392}
   Ragdobj: {fileID: 2246594083233805028}
   Spine: {fileID: 2246685306271913122}
-  Particle: {fileID: 2159636607314295153, guid: 4fc3667cb9daa3b4cbc9641fd3f27dee,
-    type: 3}
 --- !u!54 &2246111895963724338
 Rigidbody:
   m_ObjectHideFlags: 0
