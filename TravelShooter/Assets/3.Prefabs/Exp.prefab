@@ -1307,7 +1307,10 @@ MonoBehaviour:
   isActivation: 0
   capMaterial: {fileID: 0}
   ExpForce: 700
+  particle: {fileID: 1184349735746359761, guid: 97aba8d588eef08459bca29b699fca11,
+    type: 3}
   kind: 2
+  FallDirection: 5
 --- !u!1 &2107612380510410185
 GameObject:
   m_ObjectHideFlags: 0

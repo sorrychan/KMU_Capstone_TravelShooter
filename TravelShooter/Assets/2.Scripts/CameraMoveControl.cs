@@ -18,7 +18,13 @@ public class CameraMoveControl : MonoBehaviour
     
 
     private string Stages =  "Stage1_";
-    
+
+    private void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        Screen.SetResolution(600, 960, true);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,10 +60,20 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        string name = EventSystem.current.currentSelectedGameObject.name;
-        SceneManager.LoadScene(Stages + name);
+        if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+        {
+            string name = EventSystem.current.currentSelectedGameObject.name;
+            SceneManager.LoadScene(Stages + name);
+        }
     }
 
-
+    public void QuitGmae()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManagement : MonoBehaviour
 {
+
     public int isClear = 0;     //1이 클리어
     public int isFailed = 0;    //패배 상태체크;
     public int IsStart = 0;     //1이 시작
@@ -17,6 +18,7 @@ public class GameManagement : MonoBehaviour
         EnemyCount = Enemys.Length;
         //GameClearCheak();
     }
+
 
     public void GameClearCheak()    //AI.cs 에서 적이 죽을 때 마다 검사
     {
