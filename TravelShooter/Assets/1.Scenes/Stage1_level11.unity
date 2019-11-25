@@ -6459,6 +6459,10 @@ PrefabInstance:
       propertyPath: shotposY
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1792424875, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
+      propertyPath: pauseOptionScript
+      value: 
+      objectReference: {fileID: 2128451840}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d855b69e3782de44888a89b3a957f12, type: 3}
 --- !u!1 &1346764511
@@ -9768,6 +9772,7 @@ GameObject:
   - component: {fileID: 2128451843}
   - component: {fileID: 2128451841}
   - component: {fileID: 2128451842}
+  - component: {fileID: 2128451844}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9812,6 +9817,7 @@ MonoBehaviour:
   isGoldBelowZero: 0
   ClearReward: 50
   BuyGuideLine: 300
+  ExtraGold: 500
 --- !u!4 &2128451843
 Transform:
   m_ObjectHideFlags: 0
@@ -9826,6 +9832,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2128451844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128451840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0de5fd99bb99ac4e850377c92363bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockButtons: []
 --- !u!4 &2138044963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 441380, guid: 1093da2b134a65e44b0cb16f24de4b22,

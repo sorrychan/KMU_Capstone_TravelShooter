@@ -14,6 +14,7 @@ public class GoldManagement : MonoBehaviour
 
     public int ClearReward = 50;
     public int BuyGuideLine = 300;
+    public int ExtraGold = 500;
 
     private string g_key;
     private string g_value;
@@ -81,6 +82,17 @@ public class GoldManagement : MonoBehaviour
 
         }
     }
+    //골드 다른곳에서 얻을때
+    public void GetExtraGold()
+    {
+        LoadGoldInfo();
+        m_GoldAmout += ExtraGold;
+        SaveGoldInfo();
+
+        if (goldAmount != null)
+            goldAmount.text = string.Format("{0} G", m_GoldAmout);
+
+    }
 
     public void Init()
     {
@@ -146,7 +158,7 @@ public class GoldManagement : MonoBehaviour
         return result;
     }
 
-    // 암호화, 현재는 HeartAmount만
+    // 암호화
     public static void SetString(string _key, string _value, byte[] _secret)
     {
         // Hide '_key' string.  

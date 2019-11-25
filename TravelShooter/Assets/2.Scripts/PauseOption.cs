@@ -33,7 +33,7 @@ public class PauseOption : MonoBehaviour
         LoseCanvas.enabled = false;
 
 
-        Item1 = GameObject.Find("CheckItem1");
+        PreviewLineState = -1;
     }
 
     //아이템1 체크 관리
@@ -41,8 +41,11 @@ public class PauseOption : MonoBehaviour
     {
         if (!gameObject.GetComponent<GoldManagement>().isGoldBelowZero)
         {
-            if (!Item1.activeSelf)
+            //Item1 = GameObject.Find("CheckItem1");
+            if (!Item1.gameObject.activeSelf)
+            {
                 Item1.SetActive(true);
+            }
             else
                 Item1.SetActive(false);
             PreviewLineState *= -1;
@@ -56,7 +59,10 @@ public class PauseOption : MonoBehaviour
         {
             Time.timeScale = 0;
             WinCanvas.enabled = true;
+            //스테이지 클리어 골드 증가
             gameObject.GetComponent<GoldManagement>().StageClearRewardGold();
+            //스테이지 클리어시 다음 스테이지 언락
+            gameObject.GetComponent<StageLock>().AddClearStageInfo();
 
             mainCanvas.enabled = false;
             mainCamera.GetComponent<GameManagement>().isClear = 0;

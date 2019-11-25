@@ -73,6 +73,7 @@ public class DragShot : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        
         if (!IsShotProjectile)
         {
             currentDistance = Vector3.Distance(currentMousePosition, transform.position); //현재 마우스 위치 갱신

@@ -26,13 +26,13 @@ public class PreviewArch : MonoBehaviour
         //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
 
-        pauseOptionScript = GameObject.Find("GameManager");
         
     }
 
      public void Preview(Vector3 startPosition, Vector3 initialVelocity)
     {
         state = pauseOptionScript.GetComponent<PauseOption>().PreviewLineState;
+        Debug.Log("State : " + state);
         switch (state)
         {
             case -1:
