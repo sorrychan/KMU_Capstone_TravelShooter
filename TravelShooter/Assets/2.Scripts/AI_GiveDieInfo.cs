@@ -9,6 +9,10 @@ public class AI_GiveDieInfo : MonoBehaviour
     //찬솔 적 애니메이션 및 래그돌 테스트용으로 2019.10.19
     public GameObject Charobj;
     public GameObject Ragdobj;
+
+
+    public AudioSource DieSound;
+
     RaycastHit hit;
     public float MaxDistance = 3f;
 
@@ -85,6 +89,7 @@ public class AI_GiveDieInfo : MonoBehaviour
         {
             if (!IsOnceHit)
             {
+                DieSound.Play();
                 newPos.y += 2.0f;
                 Instantiate(particle, newPos, Quaternion.identity);
                 IsOnceHit = true;
@@ -104,6 +109,7 @@ public class AI_GiveDieInfo : MonoBehaviour
         {
             if (!IsOnceHit)
             {
+                DieSound.Play();
                 newPos.y += 2.0f;
                 Instantiate(particle, newPos, Quaternion.identity);
                 IsOnceHit = true;

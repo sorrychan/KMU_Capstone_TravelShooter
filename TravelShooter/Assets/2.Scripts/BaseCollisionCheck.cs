@@ -13,7 +13,8 @@ public class BaseCollisionCheck : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-            mainCamera.GetComponent<GameManagement>().isFailed = 1;
+            //mainCamera.GetComponent<GameManagement>().isFailed = 1;
+            Camera.main.GetComponent<GameManagement>().isFailed = 1;
         }
     }
 }

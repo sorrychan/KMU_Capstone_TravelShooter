@@ -32,7 +32,7 @@ public class PreviewArch : MonoBehaviour
      public void Preview(Vector3 startPosition, Vector3 initialVelocity)
     {
         state = pauseOptionScript.GetComponent<PauseOption>().PreviewLineState;
-        Debug.Log("State : " + state);
+        //Debug.Log("State : " + state);
         switch (state)
         {
             case -1:

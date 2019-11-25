@@ -13,6 +13,7 @@ TagManager:
   - Die
   - Object
   - ObjectSelect
+  - BGM
   layers:
   - Default
   - TransparentFX

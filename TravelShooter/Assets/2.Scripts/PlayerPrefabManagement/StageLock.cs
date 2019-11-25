@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-
 public class StageLock : MonoBehaviour
 {
 
     public GameObject[] LockButtons;
 
     private int m_ClearedStage = 0;
+
+    [SerializeField]
+    private int CurrentStageNum;
 
     private string L_key;
     private string L_value;
@@ -40,7 +42,8 @@ public class StageLock : MonoBehaviour
     public void AddClearStageInfo()
     {
         LoadLockedInfo();
-        m_ClearedStage ++;
+        if(m_ClearedStage<CurrentStageNum)
+            m_ClearedStage = CurrentStageNum;
         SaveLockedInfo();
     }
 
