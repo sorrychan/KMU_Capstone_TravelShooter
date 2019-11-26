@@ -16,7 +16,8 @@ public class Objects : MonoBehaviour
         Break,      //부서지는 물체
         Exp,        //폭발하는 물체
         Effect,     //투사체에 영향을 주는 물체
-        Cut         //투사체를 자르는 물체
+        Cut,        //투사체를 자르는 물체
+        Bounce      //투사체를 튕겨내는 물체
     }
 
     public Kinds kind;

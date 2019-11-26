@@ -9,8 +9,14 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(LineRenderer))]
 public class DragShot : MonoBehaviour
 {
+    public enum Kinds
+    {
+        defult,         //기본탄
+        cluster        //확산탄
+    }
+    public Kinds kind;
 
-     private float currentDistance; //공이랑 마우스 위치
+    private float currentDistance; //공이랑 마우스 위치
      private float goodSpace; // 0 - max distance 사이 공간
      private float shootPower; //쏘는 힘
      private Vector3 shootDirection; //쏠 방향
@@ -220,7 +226,6 @@ public class DragShot : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-
         if (other.collider.tag == "PLANES")
         {
             if (!IsOnceTouchGround)
@@ -230,13 +235,24 @@ public class DragShot : MonoBehaviour
                 IsOnceTouchGround = true;
             }
             Destroy(gameObject, 4f);
-
+            
         }
         else
         {
             IsHitTarget = true;
             Destroy(gameObject, 4f);
+        }
 
+        if (kind == Kinds.cluster)
+        {
+            for (int i = 1; i < 4; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                transform.GetChild(i).gameObject.SendMessage("ShotProjectile");
+                transform.GetChild(i).gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity + new Vector3((i-2)*5,0,0);
+            }
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            this.gameObject.GetComponent<SphereCollider>().enabled = false;
         }
     }
 }
