@@ -40,6 +40,9 @@ namespace ShapeFX
 		[Tooltip("Sound effect to play with the Particle System")]
 		public AudioClip soundEffect;
 
+
+
+
 		[Header("CAMERA SHAKE")]
 		[Tooltip("Perform a simple Camera shake when the effect plays")]
 		public bool shakeCamera = false;
@@ -193,9 +196,11 @@ namespace ShapeFX
 				while(!ps.isPlaying)
 					yield return null;
 
-				//play sound effect, if any
-				if(soundEffect != null)
-					AudioSource.PlayClipAtPoint(soundEffect, this.transform.position);
+                //play sound effect, if any
+                if (soundEffect != null)
+                {
+                    AudioSource.PlayClipAtPoint(soundEffect, Camera.main.transform.position);
+                }
 
 				//camera shake
 				if(shakeCamera && !DisableCameraShake)

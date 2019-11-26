@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseOption : MonoBehaviour
 {
-    
+    [Header("승리 및 패배시 사운드")]
+    public AudioSource WinSound_ohh;
+    public AudioSource LoseSound_Bhoo;
+    public AudioSource LoseSound_Harp;
+
+
     public Camera mainCamera;
     
     public GameObject Campos;
@@ -19,12 +24,14 @@ public class PauseOption : MonoBehaviour
 
     public GameObject Item1;
 
+
     //아이템 관리
     public int PreviewLineState = -1;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
         mainCanvas.enabled = true;
@@ -34,6 +41,15 @@ public class PauseOption : MonoBehaviour
 
 
         PreviewLineState = -1;
+
+        //Debug.Log(BGMClass.instance.name);
+        if (BGMClass.instance.GetComponent<AudioSource>().isPlaying)
+        {
+            return;
+        }
+        else
+            BGMClass.instance.GetComponent<AudioSource>().Play();
+
     }
 
     //아이템1 체크 관리
@@ -59,6 +75,7 @@ public class PauseOption : MonoBehaviour
         {
             Time.timeScale = 0;
             WinCanvas.enabled = true;
+            WinSound_ohh.Play();
             //스테이지 클리어 골드 증가
             gameObject.GetComponent<GoldManagement>().StageClearRewardGold();
             //스테이지 클리어시 다음 스테이지 언락
@@ -71,6 +88,8 @@ public class PauseOption : MonoBehaviour
         {
             Time.timeScale = 0;
             LoseCanvas.enabled = true;
+            LoseSound_Bhoo.Play();
+            LoseSound_Harp.Play();
             mainCanvas.enabled = false;
             mainCamera.GetComponent<GameManagement>().isFailed = 0;
         }

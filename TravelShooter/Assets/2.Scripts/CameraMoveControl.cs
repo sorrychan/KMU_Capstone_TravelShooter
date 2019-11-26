@@ -15,7 +15,7 @@ public class CameraMoveControl : MonoBehaviour
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
-    
+
 
     private string Stages =  "Stage1_";
 
@@ -39,6 +39,8 @@ public class CameraMoveControl : MonoBehaviour
         {
             MoveToStageSelect();
         }
+
+        BGMClass.instance.GetComponent<AudioSource>().Stop();
     }
 
 
