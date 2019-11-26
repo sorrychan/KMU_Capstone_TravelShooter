@@ -71,13 +71,13 @@ public class DragShot : MonoBehaviour
     //    }
     //}
 
-    private void OnMouseDrag()
+    //모바일용 터치 제어용 함수
+    private void CalculateDragPower()
     {
-        
         if (!IsShotProjectile)
         {
             currentDistance = Vector3.Distance(currentMousePosition, transform.position); //현재 마우스 위치 갱신
-                                                             
+
             if (currentDistance <= maxDistance)
             {
                 temp = currentMousePosition; //드래그 최종 가능한 거리만큼 저장
@@ -86,27 +86,78 @@ public class DragShot : MonoBehaviour
             }
             else
             {
-                temp = new Vector3(currentMousePosition.x, currentMousePosition.y, temp.z); 
+                temp = new Vector3(currentMousePosition.x, currentMousePosition.y, temp.z);
                 goodSpace = maxDistance;
             }
             //쏘는 힘 계산
             shootPower = Mathf.Abs(goodSpace) * power;
 
-         
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayers))
             {
-                currentMousePosition = new Vector3(hitInfo.point.x, transform.position.y-shotposY, hitInfo.point.z);
+                currentMousePosition = new Vector3(hitInfo.point.x, transform.position.y - shotposY, hitInfo.point.z);
             }
 
-            
-            shootDirection = Vector3.Normalize(currentMousePosition - transform.position);
-            
-        //    line.SetPosition(1, temp);
 
-            guide.GetComponent<PreviewArch>().Preview(gameObject.transform.position, shootDirection* shootPower/5 * -1);
+            shootDirection = Vector3.Normalize(currentMousePosition - transform.position);
+
+            //    line.SetPosition(1, temp);
+
+            guide.GetComponent<PreviewArch>().Preview(gameObject.transform.position, shootDirection * shootPower / 5 * -1);
         }
-    }   
+    }
+    private void ShotProjectile()
+    {
+        if (!IsShotProjectile)
+        {
+            guide.GetComponent<LineRenderer>().enabled = false;
+            GravityOn();
+            Vector3 push = shootDirection * shootPower * -1;
+            //push.y = 0;
+            GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
+            //   line.enabled = false; //remove the line
+            IsShotProjectile = true;
+        }
+    }
+
+    //PC용 마우스 입력
+    private void OnMouseDrag()
+    {
+
+        if (!IsShotProjectile)
+        {
+            currentDistance = Vector3.Distance(currentMousePosition, transform.position); //현재 마우스 위치 갱신
+
+            if (currentDistance <= maxDistance)
+            {
+                temp = currentMousePosition; //드래그 최종 가능한 거리만큼 저장
+                goodSpace = currentDistance;
+
+            }
+            else
+            {
+                temp = new Vector3(currentMousePosition.x, currentMousePosition.y, temp.z);
+                goodSpace = maxDistance;
+            }
+            //쏘는 힘 계산
+            shootPower = Mathf.Abs(goodSpace) * power;
+
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayers))
+            {
+                currentMousePosition = new Vector3(hitInfo.point.x, transform.position.y - shotposY, hitInfo.point.z);
+            }
+
+
+            shootDirection = Vector3.Normalize(currentMousePosition - transform.position);
+
+            //    line.SetPosition(1, temp);
+
+            guide.GetComponent<PreviewArch>().Preview(gameObject.transform.position, shootDirection * shootPower / 5 * -1);
+        }
+    }
 
     private void OnMouseUp()
     {
@@ -117,7 +168,7 @@ public class DragShot : MonoBehaviour
             Vector3 push = shootDirection * shootPower * -1;
             //push.y = 0;
             GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
-         //   line.enabled = false; //remove the line
+            //   line.enabled = false; //remove the line
             IsShotProjectile = true;
         }
     }
@@ -125,6 +176,39 @@ public class DragShot : MonoBehaviour
 
     private void Update()
     {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Move the cube if the screen has the finger moving.
+            if (touch.phase == TouchPhase.Moved)
+            {
+                CalculateDragPower();
+            }
+
+            if (Input.touchCount == 1)
+            {
+                touch = Input.GetTouch(1);
+
+                //if (touch.phase == TouchPhase.Began)
+                //{
+                //    // Halve the size of the cube.
+                //    transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                //}
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    ShotProjectile();
+                }
+            }
+            else if(Input.touchCount >1)
+            {
+                if (!IsShotProjectile)
+                    GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+
+        }
+
         if (IsHitTarget)
         {
             DragObject();
