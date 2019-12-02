@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UI_Target
   - PLANES
-  - UI_TempTarget
   - AngleDP
   - Bullet
   - Enemy
@@ -14,6 +12,7 @@ TagManager:
   - Object
   - ObjectSelect
   - BGM
+  - Bomb
   layers:
   - Default
   - TransparentFX
