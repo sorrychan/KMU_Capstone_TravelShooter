@@ -26,16 +26,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7062087766885116142}
-  m_LocalRotation: {x: 0.7071066, y: 0, z: 0, w: -0.70710695}
-  m_LocalPosition: {x: -12.57, y: 4.04, z: -23.93}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 7062087766885476270}
   - {fileID: 7062087766885479488}
   - {fileID: 7062087766885520766}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &7062087766879700870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,21 +54,21 @@ MonoBehaviour:
   rndStyle: 1
   rndBlendMode: 0
   useDensity: 1
-  densityCachedScale: {x: 3, y: 3, z: 1}
-  densityCachedScaleVolume: 9
+  densityCachedScale: {x: 0.5, y: 0.5, z: 1}
+  densityCachedScaleVolume: 0.25
   effectDensities:
   - particleSystem: {fileID: 7062087766871285508}
     useDensity: 1
     density: 38.88889
-    densityCachedEmissionRate: 350
+    densityCachedEmissionRate: 9.722222
   - particleSystem: {fileID: 7062087766871339628}
     useDensity: 1
     density: 33.333332
-    densityCachedEmissionRate: 300
+    densityCachedEmissionRate: 8.333333
   - particleSystem: {fileID: 7062087766871326138}
     useDensity: 1
     density: 5.5555553
-    densityCachedEmissionRate: 50
+    densityCachedEmissionRate: 1.3888888
 --- !u!199 &7062087766869282540
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -856,7 +856,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 350
+      scalar: 9.722222
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5509,7 +5509,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 300
+      scalar: 8.333333
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10144,7 +10144,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 1.3888888
       minScalar: 10
       maxCurve:
         serializedVersion: 2
