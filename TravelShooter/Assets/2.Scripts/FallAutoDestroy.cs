@@ -17,7 +17,7 @@ public class FallAutoDestroy : MonoBehaviour
 
         if (collision.gameObject.tag == "PLANES")
         {
-            gameObject.layer = 0;
+            //gameObject.layer = 0;
             Destroy(gameObject, DeadCount);
         }
     }

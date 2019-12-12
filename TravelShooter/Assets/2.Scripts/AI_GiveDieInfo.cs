@@ -102,24 +102,24 @@ public class AI_GiveDieInfo : MonoBehaviour
         Ragdobj.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, BombPos.transform.position, explosionRange, 10);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    //private void OnCollisionEnter(Collision collision)
+    //{
        
 
-        Parent.transform.position = gameObject.transform.position;
-        Ragdobj.transform.position = gameObject.transform.position;
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
-        {
-            if (!IsOnceHit)
-            {
+    //    Parent.transform.position = gameObject.transform.position;
+    //    Ragdobj.transform.position = gameObject.transform.position;
+    //    if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+    //    {
+    //        if (!IsOnceHit)
+    //        {
 
-                IsOnceHit = true;
-            }
-            HitByProjectile();
+    //            IsOnceHit = true;
+    //        }
+    //        HitByProjectile();
 
-            //Debug.Log(" Die");
-        }
-    }
+    //        //Debug.Log(" Die");
+    //    }
+    //}
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         Vector3 newPos = transform.position;
@@ -135,6 +135,15 @@ public class AI_GiveDieInfo : MonoBehaviour
             HitByProjectile();
 
             //Debug.Log(" Die");
+        }
+        if(other.gameObject.tag=="Fire")
+        {
+
+            if (!IsOnceHit)
+            {
+                IsOnceHit = true;
+            }
+            HitByProjectile();
         }
     }
 }

@@ -9,11 +9,12 @@ public class GoldManagement : MonoBehaviour
     public Text goldAmount = null;
 
     private int m_GoldAmout = 0;
-    public bool isGoldBelowZero = false;
+    //public bool isGoldBelowZero = false;
     private const int MAX_GOLD = 999999;
 
     public int ClearReward = 50;
     public int BuyGuideLine = 300;
+    public int BuyMultiShot = 1000;
     public int ExtraGold = 500;
 
     private string g_key;
@@ -31,10 +32,10 @@ public class GoldManagement : MonoBehaviour
     }
     private void Update()
     {
-        if (m_GoldAmout < 300)
-            isGoldBelowZero = true;
-        else
-            isGoldBelowZero = false;
+        //if (m_GoldAmout < 300)
+        //    isGoldBelowZero = true;
+        //else
+        //    isGoldBelowZero = false;
     }
     public void OnApplicationFocus(bool value)
     {
@@ -82,6 +83,33 @@ public class GoldManagement : MonoBehaviour
 
         }
     }
+    public bool IsGoldMoreThan300()
+    {
+        if (m_GoldAmout > 300)
+            return true;
+        else
+            return false;
+    }
+
+    public bool IsGoldMoreThan1000()
+    {
+        if (m_GoldAmout > 1000)
+            return true;
+        else
+            return false;
+    }
+
+    public void UseGoldForMultiShot()
+    {
+        if (m_GoldAmout > 1000)
+        {
+            LoadGoldInfo();
+            m_GoldAmout -= BuyMultiShot;
+            SaveGoldInfo();
+
+        }
+    }
+
     //골드 다른곳에서 얻을때
     public void GetExtraGold()
     {

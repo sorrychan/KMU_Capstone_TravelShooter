@@ -19,6 +19,7 @@ public class CameraMoveControl : MonoBehaviour
 
     private string Stages =  "Stage1_";
 
+
     private void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -42,7 +43,10 @@ public class CameraMoveControl : MonoBehaviour
 
         BGMClass.instance.GetComponent<AudioSource>().Stop();
     }
+    private void Update()
+    {
 
+    }
 
     public void MoveToMenu()
     {
@@ -62,11 +66,14 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
-        {
-            string name = EventSystem.current.currentSelectedGameObject.name;
-            SceneManager.LoadScene(Stages + name);
-        }
+
+            if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+            {
+                string name = EventSystem.current.currentSelectedGameObject.name;
+                SceneManager.LoadScene(Stages + name);
+            }
+        
+
     }
 
     public void QuitGmae()

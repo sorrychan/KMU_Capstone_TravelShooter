@@ -13,6 +13,7 @@ TagManager:
   - ObjectSelect
   - BGM
   - Bomb
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -26,10 +27,10 @@ TagManager:
   - StagePlane
   - DefendBase
   - Projectiles
-  - 
-  - 
-  - 
-  - 
+  - RollTree
+  - DeadBody
+  - EnemyNormal
+  - RollingTree
   - 
   - 
   - 
