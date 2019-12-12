@@ -19,12 +19,33 @@ public class CameraMoveControl : MonoBehaviour
 
     private string Stages =  "Stage1_";
 
+    public Easing.Type easing;
+
+    public float CamTimer = 1.0f;
+
+    private bool IsStageButtonClicked = false;
 
     private void Awake()
     {
+        //FadeInOut(true);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         Screen.SetResolution(600, 960, true);
+    }
+
+    public void FadeInOut(bool IN)
+    {
+        if (IN)
+            Camera.main.FadeIn(CamTimer, easing);
+        else
+            Camera.main.FadeOut(CamTimer, easing);
+        Invoke("wait1sec", CamTimer);
+
+    }
+
+    private void wait1sec()
+    {
+        Debug.Log("1초뒤 씬 전환");
     }
 
     // Start is called before the first frame update
@@ -45,6 +66,15 @@ public class CameraMoveControl : MonoBehaviour
     }
     private void Update()
     {
+        if(IsStageButtonClicked)
+        {
+            CamTimer -= Time.deltaTime;
+            if (CamTimer < 0)
+            {
+                string name = EventSystem.current.currentSelectedGameObject.name;
+                SceneManager.LoadScene(Stages + name);
+            }
+        }
 
     }
 
@@ -67,11 +97,14 @@ public class CameraMoveControl : MonoBehaviour
     public void MoveToGame()
     {
 
-            if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
-            {
-                string name = EventSystem.current.currentSelectedGameObject.name;
-                SceneManager.LoadScene(Stages + name);
-            }
+       if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+      {
+            FadeInOut(false);
+            
+            IsStageButtonClicked = true;
+            //string name = EventSystem.current.currentSelectedGameObject.name;
+            //    SceneManager.LoadScene(Stages + name);
+      }
         
 
     }

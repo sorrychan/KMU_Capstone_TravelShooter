@@ -454,7 +454,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274927649}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Gamemanager
@@ -2681,6 +2681,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1274927647}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1274927649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 441331077524331447, guid: 55ce57406a640ca428184389156cd70f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1274927647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1303872052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2923,7 +2929,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274927649}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Gamemanager
@@ -4016,7 +4022,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274927649}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Gamemanager

@@ -30,13 +30,13 @@ public class PauseOption : MonoBehaviour
 
     public int MulitShotState = -1;
 
-    //public Easing.Type easing;
+    public Easing.Type easing;
 
-
+    public float CamTimer = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        //FadeInOut(true);
+        FadeInOut(true);
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
         mainCanvas.enabled = true;
@@ -57,16 +57,15 @@ public class PauseOption : MonoBehaviour
 
     }
 
-    //public void FadeInOut(bool FadeIn)
-    //{
-    //    if (FadeIn)
-    //        Camera.main.FadeIn(1f, easing);
-    //    else
-    //    {
-    //        Camera.main.FadeOut(1f, easing);
-    //    }
+    public void FadeInOut(bool IN)
+    {
+        if (IN)
+            Camera.main.FadeIn(CamTimer, easing);
+        else
+            Camera.main.FadeOut(CamTimer, easing);
+        Invoke("wait1sec", CamTimer);
 
-    //}
+    }
 
     //아이템1 체크 관리
     public void CheckPreviewLineState()
