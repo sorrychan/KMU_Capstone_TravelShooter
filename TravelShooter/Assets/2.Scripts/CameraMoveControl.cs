@@ -15,10 +15,38 @@ public class CameraMoveControl : MonoBehaviour
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
-    
+
 
     private string Stages =  "Stage1_";
-    
+
+    public Easing.Type easing;
+
+    public float CamTimer = 1.0f;
+
+    private bool IsStageButtonClicked = false;
+
+    private void Awake()
+    {
+        //FadeInOut(true);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        Screen.SetResolution(600, 960, true);
+    }
+
+    public void FadeInOut(bool IN)
+    {
+        if (IN)
+            Camera.main.FadeIn(CamTimer, easing);
+        else
+            Camera.main.FadeOut(CamTimer, easing);
+        Invoke("wait1sec", CamTimer);
+
+    }
+
+    private void wait1sec()
+    {
+        Debug.Log("1초뒤 씬 전환");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +61,22 @@ public class CameraMoveControl : MonoBehaviour
         {
             MoveToStageSelect();
         }
-    }
 
+        BGMClass.instance.GetComponent<AudioSource>().Stop();
+    }
+    private void Update()
+    {
+        if(IsStageButtonClicked)
+        {
+            CamTimer -= Time.deltaTime;
+            if (CamTimer < 0)
+            {
+                string name = EventSystem.current.currentSelectedGameObject.name;
+                SceneManager.LoadScene(Stages + name);
+            }
+        }
+
+    }
 
     public void MoveToMenu()
     {
@@ -54,10 +96,26 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        string name = EventSystem.current.currentSelectedGameObject.name;
-        SceneManager.LoadScene(Stages + name);
+
+       if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+      {
+            FadeInOut(false);
+            
+            IsStageButtonClicked = true;
+            //string name = EventSystem.current.currentSelectedGameObject.name;
+            //    SceneManager.LoadScene(Stages + name);
+      }
+        
+
     }
 
-
+    public void QuitGmae()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
 }

@@ -4,14 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UI_Target
   - PLANES
-  - UI_TempTarget
   - AngleDP
   - Bullet
   - Enemy
   - Die
   - Object
+  - ObjectSelect
+  - BGM
+  - Bomb
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -25,10 +27,10 @@ TagManager:
   - StagePlane
   - DefendBase
   - Projectiles
-  - 
-  - 
-  - 
-  - 
+  - RollTree
+  - DeadBody
+  - EnemyNormal
+  - RollingTree
   - 
   - 
   - 
