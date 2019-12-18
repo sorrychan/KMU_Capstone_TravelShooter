@@ -30,13 +30,9 @@ public class PauseOption : MonoBehaviour
 
     public int MulitShotState = -1;
 
-    public Easing.Type easing;
-
-    public float CamTimer = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        FadeInOut(true);
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
         mainCanvas.enabled = true;
@@ -54,16 +50,6 @@ public class PauseOption : MonoBehaviour
         }
         else
             BGMClass.instance.GetComponent<AudioSource>().Play();
-
-    }
-
-    public void FadeInOut(bool IN)
-    {
-        if (IN)
-            Camera.main.FadeIn(CamTimer, easing);
-        else
-            Camera.main.FadeOut(CamTimer, easing);
-        Invoke("wait1sec", CamTimer);
 
     }
 

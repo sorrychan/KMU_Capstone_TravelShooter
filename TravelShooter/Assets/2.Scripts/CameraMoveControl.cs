@@ -12,6 +12,7 @@ public class CameraMoveControl : MonoBehaviour
 
     public GameObject[] CameraPositions;
 
+   
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
@@ -19,7 +20,6 @@ public class CameraMoveControl : MonoBehaviour
 
     private string Stages =  "Stage1_";
 
-    public Easing.Type easing;
 
     public float CamTimer = 1.0f;
 
@@ -27,26 +27,12 @@ public class CameraMoveControl : MonoBehaviour
 
     private void Awake()
     {
-        //FadeInOut(true);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         Screen.SetResolution(600, 960, true);
     }
 
-    public void FadeInOut(bool IN)
-    {
-        if (IN)
-            Camera.main.FadeIn(CamTimer, easing);
-        else
-            Camera.main.FadeOut(CamTimer, easing);
-        Invoke("wait1sec", CamTimer);
 
-    }
-
-    private void wait1sec()
-    {
-        Debug.Log("1초뒤 씬 전환");
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -99,8 +85,6 @@ public class CameraMoveControl : MonoBehaviour
 
        if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
       {
-            FadeInOut(false);
-            
             IsStageButtonClicked = true;
             //string name = EventSystem.current.currentSelectedGameObject.name;
             //    SceneManager.LoadScene(Stages + name);

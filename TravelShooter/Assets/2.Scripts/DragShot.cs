@@ -187,9 +187,9 @@ public class DragShot : MonoBehaviour
             guide.GetComponent<LineRenderer>().enabled = false;
             GravityOn();
             Vector3 push = shootDirection * shootPower * -1;
-            //push.y = 0;
+            
             GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
-            //   line.enabled = false; //remove the line
+            
             IsShotProjectile = true;
         }
     }

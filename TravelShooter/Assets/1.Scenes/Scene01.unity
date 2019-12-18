@@ -489,7 +489,6 @@ MonoBehaviour:
   - {fileID: 1116114317}
   - {fileID: 1440846341}
   - {fileID: 0}
-  easing: 0
   CamTimer: 1
 --- !u!114 &65711794
 MonoBehaviour:
