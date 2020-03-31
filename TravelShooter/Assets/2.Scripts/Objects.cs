@@ -17,8 +17,7 @@ public class Objects : MonoBehaviour
         Exp,        //폭발하는 물체
         Effect,     //투사체에 영향을 주는 물체
         Cut,        //투사체를 자르는 물체
-        Fire,        //불타는 물체
-        FireSwitch  //불타는 물체 스위치
+        Fire        //불타는 물체
     }
 
     public Kinds kind;
@@ -28,7 +27,7 @@ public class Objects : MonoBehaviour
 
 
     Rigidbody rb;
-    
+
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.gameObject.GetComponent<AI_GiveDieInfo>()!=null && isActivation == 1)      //총알의 태그 = "Bullet", 활성화 되지 않았을 경우
@@ -120,13 +119,12 @@ public class Objects : MonoBehaviour
                     //isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
                     break;
 
-                case Kinds.FireSwitch:
-                    //Instantiate(particle, transform.GetChild(0).gameObject.transform);
+                case Kinds.Fire:
                     transform.GetChild(0).gameObject.SetActive(true);
-                    //transform.GetChild(1).gameObject.SetActive(true);
+
                     isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
 
-                    Destroy(transform.GetChild(0).gameObject, 5.0f);
+                    Destroy(this.gameObject, 5.0f);
                     break;
             }
         }
