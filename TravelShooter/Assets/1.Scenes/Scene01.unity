@@ -489,6 +489,7 @@ MonoBehaviour:
   - {fileID: 1116114317}
   - {fileID: 1440846341}
   - {fileID: 0}
+  CamTimer: 1
 --- !u!114 &65711794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,9 +537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldAmount: {fileID: 948696244}
-  isGoldBelowZero: 0
   ClearReward: 50
   BuyGuideLine: 300
+  BuyMultiShot: 1000
   ExtraGold: 500
 --- !u!114 &65711797
 MonoBehaviour:
@@ -3722,7 +3723,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 65711797}
-        m_MethodName: AddClearStageInfo
+        m_MethodName: AddCheatNum
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6382,7 +6383,7 @@ GameObject:
   - component: {fileID: 1244269622}
   m_Layer: 0
   m_Name: MenuCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

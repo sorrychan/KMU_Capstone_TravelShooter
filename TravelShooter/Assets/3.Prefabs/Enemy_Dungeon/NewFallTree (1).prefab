@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2759145599224458548}
   - component: {fileID: 2755484269569771804}
   - component: {fileID: 2744884711450078826}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Baumstamm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2759156068473424832}
   - component: {fileID: 2757748093946310578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TreeStump_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7598273598535404632}
   - component: {fileID: 2757748094734598953}
   - component: {fileID: 1211784200933539559}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: TreeStump_8
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2757185942795873198}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -229,7 +229,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.33
+  m_Radius: 0.43
   m_Height: 5.21
   m_Direction: 1
   m_Center: {x: 0.06, y: 0.13557184, z: 0.03}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 2759161433354948266}
   - component: {fileID: 2755625964320403832}
   - component: {fileID: 2743233007315131090}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Baumstamm_innen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 6670187395623664998}
   - component: {fileID: 6670187395623664997}
   - component: {fileID: 6670187395623664996}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NewFallTree (1)
   m_TagString: ObjectSelect
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670187395623664999}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.21, y: 8.74, z: 26.23}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:

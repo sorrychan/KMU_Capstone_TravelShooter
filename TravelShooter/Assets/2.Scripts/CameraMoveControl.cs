@@ -12,6 +12,7 @@ public class CameraMoveControl : MonoBehaviour
 
     public GameObject[] CameraPositions;
 
+   
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
@@ -19,12 +20,19 @@ public class CameraMoveControl : MonoBehaviour
 
     private string Stages =  "Stage1_";
 
+
+    public float CamTimer = 1.0f;
+
+    private bool IsStageButtonClicked = false;
+
     private void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         Screen.SetResolution(600, 960, true);
     }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +50,19 @@ public class CameraMoveControl : MonoBehaviour
 
         BGMClass.instance.GetComponent<AudioSource>().Stop();
     }
+    private void Update()
+    {
+        if(IsStageButtonClicked)
+        {
+            CamTimer -= Time.deltaTime;
+            if (CamTimer < 0)
+            {
+                string name = EventSystem.current.currentSelectedGameObject.name;
+                SceneManager.LoadScene(Stages + name);
+            }
+        }
 
+    }
 
     public void MoveToMenu()
     {
@@ -62,11 +82,15 @@ public class CameraMoveControl : MonoBehaviour
 
     public void MoveToGame()
     {
-        if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
-        {
-            string name = EventSystem.current.currentSelectedGameObject.name;
-            SceneManager.LoadScene(Stages + name);
-        }
+
+       if (!gameObject.GetComponent<HeartRechargeManagement>().isHeartBelowZero)
+      {
+            IsStageButtonClicked = true;
+            //string name = EventSystem.current.currentSelectedGameObject.name;
+            //    SceneManager.LoadScene(Stages + name);
+      }
+        
+
     }
 
     public void QuitGmae()

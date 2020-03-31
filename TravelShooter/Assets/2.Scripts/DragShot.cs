@@ -48,6 +48,10 @@ public class DragShot : MonoBehaviour
     private bool IsHitTarget = false;
     private bool IsShotProjectile = false;
 
+    [SerializeField]
+    private GameObject pauseOptionScript;
+    private int state = -1;
+
     private void Awake()
      {
         // line = GetComponent<LineRenderer>(); 
@@ -130,6 +134,17 @@ public class DragShot : MonoBehaviour
     //PC용 마우스 입력
     private void OnMouseDrag()
     {
+        state = pauseOptionScript.GetComponent<PauseOption>().MulitShotState;
+        // <<<< 멀티샷 구매 <<<<
+        switch (state)
+        {
+            case -1:
+                kind = Kinds.defult;
+                break;
+            case 1:
+                kind = Kinds.cluster;
+                break;
+        }
 
         if (!IsShotProjectile)
         {
@@ -172,9 +187,9 @@ public class DragShot : MonoBehaviour
             guide.GetComponent<LineRenderer>().enabled = false;
             GravityOn();
             Vector3 push = shootDirection * shootPower * -1;
-            //push.y = 0;
+            
             GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
-            //   line.enabled = false; //remove the line
+            
             IsShotProjectile = true;
         }
     }
@@ -248,7 +263,7 @@ public class DragShot : MonoBehaviour
             for (int i = 1; i < 4; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                transform.GetChild(i).gameObject.SendMessage("ShotProjectile");
+                //transform.GetChild(i).gameObject.SendMessage("ShotProjectile");
                 transform.GetChild(i).gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity + new Vector3((i-2)*5,0,0);
             }
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;

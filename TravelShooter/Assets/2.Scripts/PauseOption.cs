@@ -23,15 +23,16 @@ public class PauseOption : MonoBehaviour
     public Canvas InfoCanvas;
 
     public GameObject Item1;
-
+    public GameObject Item2;
 
     //아이템 관리
     public int PreviewLineState = -1;
 
+    public int MulitShotState = -1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
         mainCanvas.enabled = true;
@@ -55,7 +56,7 @@ public class PauseOption : MonoBehaviour
     //아이템1 체크 관리
     public void CheckPreviewLineState()
     {
-        if (!gameObject.GetComponent<GoldManagement>().isGoldBelowZero)
+        if (gameObject.GetComponent<GoldManagement>().IsGoldMoreThan300())
         {
             //Item1 = GameObject.Find("CheckItem1");
             if (!Item1.gameObject.activeSelf)
@@ -65,6 +66,22 @@ public class PauseOption : MonoBehaviour
             else
                 Item1.SetActive(false);
             PreviewLineState *= -1;
+        }
+    }
+
+    //아이템2 체크 관리
+    public void CheckMultiPleShotState()
+    {
+        if (gameObject.GetComponent<GoldManagement>().IsGoldMoreThan1000())
+        {
+            //Item1 = GameObject.Find("CheckItem1");
+            if (!Item2.gameObject.activeSelf)
+            {
+                Item2.SetActive(true);
+            }
+            else
+                Item2.SetActive(false);
+            MulitShotState *= -1;
         }
     }
 
@@ -109,21 +126,31 @@ public class PauseOption : MonoBehaviour
             
         }
 
+
     }
 
     public void StageInfo()
     {
-        if(Item1!=null &&Item1.activeSelf)
-        {
-            Debug.Log("골드 소모 체크");
-            gameObject.GetComponent<GoldManagement>().UseGoldForGuideLine();
-        }
-        Campos.GetComponent<GameCameraMovement>().IsMoveOn = true;
-        InfoCanvas.enabled = false;
+
+            if (Item1 != null && Item1.activeSelf)
+            {
+                Debug.Log("골드 소모 체크");
+                gameObject.GetComponent<GoldManagement>().UseGoldForGuideLine();
+            }
+            if (Item2 != null && Item2.activeSelf)
+            {
+                gameObject.GetComponent<GoldManagement>().UseGoldForMultiShot();
+            }
+
+            Campos.GetComponent<GameCameraMovement>().IsMoveOn = true;
+
+            InfoCanvas.enabled = false;
+       
     }
     public void NextStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
     public void PauseButtonClicked()
@@ -141,12 +168,13 @@ public class PauseOption : MonoBehaviour
     }
     public void RetryStage()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToStageSelect()
     {
+
         CameraMoveControl.A = 1;
-        SceneManager.LoadScene("Scene01");
+            SceneManager.LoadScene("Scene01");
     }
 }

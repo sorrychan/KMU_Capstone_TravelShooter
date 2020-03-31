@@ -10,8 +10,10 @@ public class AI_GiveDieInfo : MonoBehaviour
     public GameObject Charobj;
     public GameObject Ragdobj;
 
-
     public AudioSource DieSound;
+
+    public GameObject BombPos;
+
 
     RaycastHit hit;
     public float MaxDistance = 3f;
@@ -21,13 +23,17 @@ public class AI_GiveDieInfo : MonoBehaviour
     [Header("충돌속도가 이 값 이하면 충돌판정 x")]
     public float CollisionSpeed = 2.0f;
 
+    [Header("폭발 범위 조절 값")]
+    public float explosionRange = 15;
+
+
     private Vector3 rayposition;
     private bool IsOnceHit = false; //파티클 한번만
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        BombPos = GameObject.FindGameObjectWithTag("Bomb");
     }
     private void ChangeRagdoll()
     {
@@ -37,6 +43,7 @@ public class AI_GiveDieInfo : MonoBehaviour
         Ragdobj.gameObject.SetActive(true);
 
     }
+    
 
     private void Update()
     {
@@ -75,30 +82,44 @@ public class AI_GiveDieInfo : MonoBehaviour
     }
     private void HitByProjectile()
     {
+        Vector3 newPos = transform.position;
+        DieSound.Play();
+        newPos.y += 2.0f;
+        Instantiate(particle, newPos, Quaternion.identity);
         Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
         ChangeRagdoll();
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void HitByExplosion()
     {
         Vector3 newPos = transform.position;
-
-        Parent.transform.position = gameObject.transform.position;
-        Ragdobj.transform.position = gameObject.transform.position;
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
-        {
-            if (!IsOnceHit)
-            {
-                DieSound.Play();
-                newPos.y += 2.0f;
-                Instantiate(particle, newPos, Quaternion.identity);
-                IsOnceHit = true;
-            }
-            HitByProjectile();
-
-            //Debug.Log(" Die");
-        }
+        DieSound.Play();
+        newPos.y += 2.0f;
+        Instantiate(particle, newPos, Quaternion.identity);
+        Parent.GetComponent<AI>().enemyState = AI.EnemyState.die;
+        ChangeRagdoll();
+        Ragdobj.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, BombPos.transform.position, explosionRange, 10);
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+       
+
+    //    Parent.transform.position = gameObject.transform.position;
+    //    Ragdobj.transform.position = gameObject.transform.position;
+    //    if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Die")/*&&collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude> CollisionSpeed)*/      //태그가 불릿이나 오브젝트이고, 속도가 일정 이상이 되면
+    //    {
+    //        if (!IsOnceHit)
+    //        {
+
+    //            IsOnceHit = true;
+    //        }
+    //        HitByProjectile();
+
+    //        //Debug.Log(" Die");
+    //    }
+    //}
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         Vector3 newPos = transform.position;
@@ -109,14 +130,20 @@ public class AI_GiveDieInfo : MonoBehaviour
         {
             if (!IsOnceHit)
             {
-                DieSound.Play();
-                newPos.y += 2.0f;
-                Instantiate(particle, newPos, Quaternion.identity);
                 IsOnceHit = true;
             }
             HitByProjectile();
 
             //Debug.Log(" Die");
+        }
+        if(other.gameObject.tag=="Fire")
+        {
+
+            if (!IsOnceHit)
+            {
+                IsOnceHit = true;
+            }
+            HitByProjectile();
         }
     }
 }

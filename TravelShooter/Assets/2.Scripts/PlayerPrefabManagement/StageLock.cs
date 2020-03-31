@@ -38,6 +38,12 @@ public class StageLock : MonoBehaviour
             }
         }
     }
+    public void AddCheatNum()
+    {
+        LoadLockedInfo();
+        m_ClearedStage++;
+        SaveLockedInfo();
+    }
     
     public void AddClearStageInfo()
     {

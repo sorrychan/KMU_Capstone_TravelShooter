@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endAction: 1
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 63be0c9faa8590443a18be84139bc819, type: 3}
   shakeCamera: 1
   cameraToShake: {fileID: 0}
   shakeAngle: 90
