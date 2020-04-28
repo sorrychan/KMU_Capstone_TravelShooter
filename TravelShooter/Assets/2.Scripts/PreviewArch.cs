@@ -32,8 +32,8 @@ public class PreviewArch : MonoBehaviour
         _line.positionCount = subdivisionCount;
         //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
+        pauseOptionScript = GameObject.Find("GameManager");
 
-        
     }
 
     void Start()

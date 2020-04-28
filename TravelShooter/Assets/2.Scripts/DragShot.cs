@@ -55,8 +55,9 @@ public class DragShot : MonoBehaviour
     private void Awake()
      {
         // line = GetComponent<LineRenderer>(); 
-         rbody = GetComponent<Rigidbody>();
+        rbody = GetComponent<Rigidbody>();
         obstacle = gameObject.GetComponent<NavMeshObstacle>();
+        pauseOptionScript = GameObject.Find("GameManager");
     }
      
      void DragObject()

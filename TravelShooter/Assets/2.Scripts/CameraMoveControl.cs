@@ -93,6 +93,11 @@ public class CameraMoveControl : MonoBehaviour
 
     }
 
+    public void MoveToTileMapEditer()
+    {
+        SceneManager.LoadScene("TileMapEditer");
+    }
+
     public void QuitGmae()
     {
 #if UNITY_EDITOR

@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2943580090932788784
 Transform:
   m_ObjectHideFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2943580090932788780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.92, y: 2.47, z: -40.19}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4613905776985502543}
   - {fileID: 2704137959881481337}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0543cf09b39d0364dba725a8ed79035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: 1
+  kind: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -153,6 +153,7 @@ MonoBehaviour:
   Particle: {fileID: 173054, guid: eead5c11b5b000c459d5e73bbeaddb80, type: 3}
   dragValue: 0.9
   shotposY: 0.5
+  pauseOptionScript: {fileID: 0}
 --- !u!96 &4925717767231319087
 TrailRenderer:
   serializedVersion: 2
@@ -579,6 +580,7 @@ MonoBehaviour:
   Particle: {fileID: 173054, guid: eead5c11b5b000c459d5e73bbeaddb80, type: 3}
   dragValue: 0.9
   shotposY: 0.5
+  pauseOptionScript: {fileID: 0}
 --- !u!96 &1342351119355955552
 TrailRenderer:
   serializedVersion: 2
@@ -832,6 +834,7 @@ MonoBehaviour:
   Particle: {fileID: 173054, guid: eead5c11b5b000c459d5e73bbeaddb80, type: 3}
   dragValue: 0.9
   shotposY: 0.5
+  pauseOptionScript: {fileID: 0}
 --- !u!96 &8026771167428948501
 TrailRenderer:
   serializedVersion: 2
@@ -1085,6 +1088,7 @@ MonoBehaviour:
   Particle: {fileID: 173054, guid: eead5c11b5b000c459d5e73bbeaddb80, type: 3}
   dragValue: 0.9
   shotposY: 0.5
+  pauseOptionScript: {fileID: 0}
 --- !u!96 &7354546923164992593
 TrailRenderer:
   serializedVersion: 2
