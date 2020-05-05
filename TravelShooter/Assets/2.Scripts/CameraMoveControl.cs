@@ -64,6 +64,13 @@ public class CameraMoveControl : MonoBehaviour
 
     }
 
+    public void MoveToMain()
+    {
+        canvas[0].enabled = true;
+        canvas[1].enabled = false;
+        canvas[2].enabled = false;
+        MenuCamera.transform.position = CameraPositions[0].transform.position;
+    }
     public void MoveToMenu()
     {
       //  MenuCamera.enabled = true;
@@ -93,9 +100,9 @@ public class CameraMoveControl : MonoBehaviour
 
     }
 
-    public void MoveToTileMapEditer()
+    public void MoveToUserMap()
     {
-        SceneManager.LoadScene("TileMapEditer");
+        SceneManager.LoadScene("UserMap");
     }
 
     public void QuitGmae()

@@ -7,6 +7,7 @@ public class TileMap : MonoBehaviour
     //public GameObject Choose;
     public enum Tile { none ,enemy, tree, boom, bullet};
     public static int EnumTile;
+    public int TileData=0;
 
     public Tile tile = Tile.none;
 
@@ -58,6 +59,7 @@ public class TileMap : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
         gameObject.SetActive(true);
+        TileData = EnumTile;
         switch (EnumTile)
         {
             case 0:
