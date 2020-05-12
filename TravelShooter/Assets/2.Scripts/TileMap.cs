@@ -5,9 +5,9 @@ using UnityEngine;
 public class TileMap : MonoBehaviour
 {
     //public GameObject Choose;
-    public enum Tile { none ,enemy, tree, boom, bullet};
-    public static int EnumTile;
-    public int TileData=0;
+    public enum Tile { none ,enemy, tree, boom, bullet};    //추가 시 TileMap75 스크립트도 함께 수정
+    public static int EnumTile;     //버튼에 선택된 오브젝트
+    public int TileData=0;          //이 타일의 값
 
     public Tile tile = Tile.none;
 

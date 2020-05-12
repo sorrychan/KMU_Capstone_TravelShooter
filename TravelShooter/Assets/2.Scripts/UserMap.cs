@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UserMap : MonoBehaviour
 {
-
     public void MoveToTileMapEditor()
     {
         SceneManager.LoadScene("TileMapEditor");
