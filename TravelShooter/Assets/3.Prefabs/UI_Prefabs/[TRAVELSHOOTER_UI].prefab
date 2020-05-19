@@ -486,7 +486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.86997986, y: -0.00005458275}
+  m_AnchoredPosition: {x: 0.86997986, y: 57}
   m_SizeDelta: {x: -0.9, y: 264.3}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1574871929494636902
@@ -625,7 +625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.86997986, y: 0.000025380636}
+  m_AnchoredPosition: {x: 0.86997986, y: 16}
   m_SizeDelta: {x: -0.9, y: 230.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1574871929582826570
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.100058, y: -30.200035}
+  m_AnchoredPosition: {x: 12.100058, y: -44}
   m_SizeDelta: {x: -21.200012, y: -140.39996}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1574871929701590960
@@ -2166,7 +2166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 202.45, y: -78}
+  m_AnchoredPosition: {x: 202.45, y: -169}
   m_SizeDelta: {x: 404.9, y: 30.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1574871930378258397
@@ -3564,7 +3564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.100058, y: -9.200035}
+  m_AnchoredPosition: {x: 12.100058, y: 27}
   m_SizeDelta: {x: -24.200012, y: -66.80003}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1574871930830885579
@@ -3839,6 +3839,8 @@ MonoBehaviour:
   Item2: {fileID: 1574871930497319337}
   PreviewLineState: -1
   MulitShotState: -1
+  easing: 0
+  CamTimer: 1
 --- !u!114 &1574871930945447857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5046,6 +5048,7 @@ MonoBehaviour:
   GuideLine_pauseOption: 0
   noValue: 0
   noval: 0
+  thisisimportant: 0
 --- !u!1001 &601946783077964946
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -56,7 +56,13 @@ public class PowerShot : MonoBehaviour
             Destroy(gameObject, 4f);
            
         }
+        if(other.collider.tag == "WALL")
+        {
+            Destroy(gameObject, 4f);
+        }
     }
+
+
     void DragObject()
     {
         obstacle.enabled = true;

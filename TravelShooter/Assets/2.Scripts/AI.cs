@@ -25,6 +25,7 @@ public class AI : MonoBehaviour
     public GameObject Charobj;
     public GameObject Ragdobj;
     public GameObject Spine;
+    public bool x = true;
 
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
     {
@@ -37,8 +38,11 @@ public class AI : MonoBehaviour
         nvAgent.speed = Speed;                       //적의 속도 설정
         //gameObject.tag = "Enemy";                   //적의 테그 설정
         TargetPos = Target.transform.position;       //타겟 위치
-        TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
 
+        if (x)
+        {
+            TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
+        }
 
     }
 
@@ -77,14 +81,11 @@ public class AI : MonoBehaviour
     {
         while (true)
         {
-
-
             if (Ragdobj.activeSelf == true && Charobj.activeSelf == false)
                 enemyState = EnemyState.die;
             switch (enemyState)
             {
-
-
+                
                 case EnemyState.die:
                     //animator.SetBool("Walk", false);
                     //animator.SetBool("Die", true);

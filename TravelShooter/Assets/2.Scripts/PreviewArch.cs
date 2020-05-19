@@ -33,7 +33,7 @@ public class PreviewArch : MonoBehaviour
         //_line.SetVertexCount(subdivisionCount);
         _points = new Vector3[subdivisionCount];
 
-        
+
     }
 
     void Start()
