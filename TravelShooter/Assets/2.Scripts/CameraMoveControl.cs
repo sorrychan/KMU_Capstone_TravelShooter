@@ -12,7 +12,7 @@ public class CameraMoveControl : MonoBehaviour
 
     public GameObject[] CameraPositions;
 
-   
+    public GameObject Stage;
 
     //0 : 타이틀  1: 메뉴 2: 레벨 3:게임씬
     public Canvas[] canvas;
@@ -58,6 +58,18 @@ public class CameraMoveControl : MonoBehaviour
             if (CamTimer < 0)
             {
                 string name = EventSystem.current.currentSelectedGameObject.name;
+                switch (Stage.GetComponent<StageMove>().CurrentStage)
+                {
+                    case 0:
+                        Stages = "Stage1_";
+                        break;
+                    case 1:
+                        Stages = "Stage2_";
+                        break;
+                    case 2:
+                        Stages = "Stage3_";
+                        break;
+                }
                 SceneManager.LoadScene(Stages + name);
             }
         }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4000012218975936}
   - component: {fileID: 33000013708871146}
   - component: {fileID: 23000013335402128}
-  - component: {fileID: 65000013855422192}
   m_Layer: 0
   m_Name: wall-medieval-wood
   m_TagString: Untagged
@@ -78,16 +77,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65000013855422192
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013265577500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0285754, y: 3.732244, z: 1.4229634}
-  m_Center: {x: -0.004080355, y: 1.8538315, z: 0.0012759864}

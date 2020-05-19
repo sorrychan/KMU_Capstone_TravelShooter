@@ -14,6 +14,10 @@ TagManager:
   - BGM
   - Bomb
   - Fire
+  - UI_Target
+  - UI_TempTarget
+  - Wall
+  - Fall
   layers:
   - Default
   - TransparentFX
