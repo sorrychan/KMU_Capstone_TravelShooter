@@ -768,7 +768,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 1
@@ -3869,7 +3869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LockButtons: []
-  CurrentStageNum: 3
+  CurrentStageNum: 14
 --- !u!1 &1574871931151642066
 GameObject:
   m_ObjectHideFlags: 0

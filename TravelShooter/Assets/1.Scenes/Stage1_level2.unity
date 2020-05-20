@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1231,6 +1231,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1574871930945447858, guid: 736d9dba6b60eae4ea2a39628df537dc,
+        type: 3}
+      propertyPath: CurrentStageNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1574871929464207488, guid: 736d9dba6b60eae4ea2a39628df537dc,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1255,11 +1260,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lightmapping
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574871930945447858, guid: 736d9dba6b60eae4ea2a39628df537dc,
-        type: 3}
-      propertyPath: CurrentStageNum
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736d9dba6b60eae4ea2a39628df537dc, type: 3}
@@ -1734,11 +1734,6 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 493784593}
-    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
-        type: 3}
-      propertyPath: BombPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Target
@@ -1749,6 +1744,11 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 64357242}
+    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: BombPos
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}
 --- !u!4 &911809442 stripped
@@ -2028,11 +2028,6 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 493784593}
-    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
-        type: 3}
-      propertyPath: BombPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Target
@@ -2043,6 +2038,11 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 64357242}
+    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: BombPos
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}
 --- !u!4 &1009154497 stripped
@@ -3276,11 +3276,6 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 493784593}
-    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
-        type: 3}
-      propertyPath: BombPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2246111895759486822, guid: d8d6377d48455b847bc63dde44572909,
         type: 3}
       propertyPath: Target
@@ -3291,6 +3286,11 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 64357242}
+    - target: {fileID: 7790347562077575185, guid: d8d6377d48455b847bc63dde44572909,
+        type: 3}
+      propertyPath: BombPos
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d6377d48455b847bc63dde44572909, type: 3}
 --- !u!4 &1849733845 stripped
