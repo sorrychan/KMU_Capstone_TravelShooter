@@ -767,19 +767,19 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
-  m_CookieSize: 10
+  m_CookieSize: 1
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Strength: 0.25
+    m_Bias: 0
+    m_NormalBias: 0
+    m_NearPlane: 0.1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -3839,8 +3839,6 @@ MonoBehaviour:
   Item2: {fileID: 1574871930497319337}
   PreviewLineState: -1
   MulitShotState: -1
-  easing: 0
-  CamTimer: 1
 --- !u!114 &1574871930945447857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3871,7 +3869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LockButtons: []
-  CurrentStageNum: 1
+  CurrentStageNum: 3
 --- !u!1 &1574871931151642066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5164,6 +5162,11 @@ PrefabInstance:
     - target: {fileID: 2126150673779928346, guid: 45b8be286edd537408b4378c62ab8623,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126150674181598586, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2126150673779928349, guid: 45b8be286edd537408b4378c62ab8623,

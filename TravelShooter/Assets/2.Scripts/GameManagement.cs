@@ -22,6 +22,8 @@ public class GameManagement : MonoBehaviour
 
     public void GameClearCheak()    //AI.cs 에서 적이 죽을 때 마다 검사
     {
+        Enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        EnemyCount = Enemys.Length;
         if (EnemyCount == 0)           //적이 남아있지 않으면
         {
             isClear = 1;            //클리어

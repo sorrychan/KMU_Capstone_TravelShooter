@@ -9,6 +9,8 @@ public class UserMapPanel : MonoBehaviour
     public string[] Elements;
     public GameObject UserMap;
     public GameObject UM;
+    float width;
+    float height;
 
     IEnumerator Start()
     {
@@ -19,9 +21,10 @@ public class UserMapPanel : MonoBehaviour
 
         for (int i = 0; i < items.Length-1; i++)
         {
+            this.GetComponent<RectTransform>().sizeDelta = this.GetComponent<RectTransform>().sizeDelta + new Vector2(0,150);
             UM = Instantiate(UserMap);
             UM.transform.SetParent(this.transform, false);
-            UM.GetComponent<RectTransform>().position = transform.GetComponent<RectTransform>().position - new Vector3(0,30 + 200*i,0);
+            UM.GetComponent<RectTransform>().position = transform.GetComponent<RectTransform>().position - new Vector3(0,30 + 150*i,0);
             Elements = items[i].Split('|');
 
             UM.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = Elements[0];

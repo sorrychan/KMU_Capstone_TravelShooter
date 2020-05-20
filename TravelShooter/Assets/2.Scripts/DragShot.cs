@@ -62,8 +62,12 @@ public class DragShot : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         obstacle = gameObject.GetComponent<NavMeshObstacle>();
         rbody.useGravity = false;
-    }
-
+        pauseOptionScript = GameObject.Find("GameManager");
+        guide = GameObject.Find("GuideLine");
+    }
+
+
+
     void DragObject()
      {
          obstacle.enabled = true;
@@ -134,12 +138,18 @@ public class DragShot : MonoBehaviour
             //   line.enabled = false; //remove the line
             IsShotProjectile = true;
         }
-    }
-
-    //PC용 마우스 입력
-    private void OnMouseDown()
-    {
-        guide.GetComponent<LineRenderer>().enabled = true;
+    }
+
+
+
+    //PC용 마우스 입력
+
+    private void OnMouseDown()
+
+    {
+
+        guide.GetComponent<LineRenderer>().enabled = true;
+
     }
 
     private void OnMouseDrag()
@@ -209,7 +219,7 @@ public class DragShot : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            guide.GetComponent<LineRenderer>().enabled = true;
+            //guide.GetComponent<LineRenderer>().enabled = true;
             Touch touch = Input.GetTouch(0);
 
             // Move the cube if the screen has the finger moving.
@@ -259,10 +269,14 @@ public class DragShot : MonoBehaviour
                 Vector3 collisionPos = transform.position;
                 Instantiate(Particle, collisionPos,Quaternion.identity);
                 IsOnceTouchGround = true;
-                if (respawn)
-                {
-                    var ball = Instantiate(_ball, BallPosition.position, Quaternion.identity) as GameObject;
-                }
+                if (respawn)
+
+                {
+
+                    var ball = Instantiate(_ball, BallPosition.position, Quaternion.identity) as GameObject;
+
+                }
+
             }
             Destroy(gameObject, 4f);
             
@@ -272,7 +286,8 @@ public class DragShot : MonoBehaviour
         else
         {
             IsHitTarget = true;
-            Destroy(gameObject, 4f);
+            Destroy(gameObject, 4f);
+
             //var ball = Instantiate(_ball, _ball.transform.localPosition, Quaternion.identity) as GameObject;
         }
 
@@ -288,6 +303,7 @@ public class DragShot : MonoBehaviour
             this.gameObject.GetComponent<SphereCollider>().enabled = false;
         }
 
-    }
+    }
+
     
 }
