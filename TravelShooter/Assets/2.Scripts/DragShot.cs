@@ -78,7 +78,8 @@ public class DragShot : MonoBehaviour
      private void GravityOn()
      {
         rbody.useGravity = true;
-     }
+        //guide.GetComponent<LineRenderer>().enabled =false;
+    }
 
     //private void OnMouseDown()
     //{
@@ -143,15 +144,6 @@ public class DragShot : MonoBehaviour
 
 
     //PC용 마우스 입력
-
-    private void OnMouseDown()
-
-    {
-
-        guide.GetComponent<LineRenderer>().enabled = true;
-
-    }
-
     private void OnMouseDrag()
     {
         state = pauseOptionScript.GetComponent<PauseOption>().MulitShotState;
@@ -168,6 +160,7 @@ public class DragShot : MonoBehaviour
 
         if (!IsShotProjectile)
         {
+            guide.GetComponent<LineRenderer>().enabled = true;
             currentDistance = Vector3.Distance(currentMousePosition, transform.position); //현재 마우스 위치 갱신
 
             if (currentDistance <= maxDistance)
