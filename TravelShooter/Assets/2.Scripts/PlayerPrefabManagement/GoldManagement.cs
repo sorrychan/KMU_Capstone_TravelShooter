@@ -16,6 +16,7 @@ public class GoldManagement : MonoBehaviour
     public int BuyGuideLine = 300;
     public int BuyMultiShot = 1000;
     public int ExtraGold = 500;
+    public int Continue = 0;
 
     private string g_key;
     private string g_value;
@@ -108,6 +109,19 @@ public class GoldManagement : MonoBehaviour
             SaveGoldInfo();
 
         }
+    }
+
+    public bool UseGoldForContinue()
+    {
+        if (m_GoldAmout > Continue)
+        {
+            LoadGoldInfo();
+            m_GoldAmout -= Continue;
+            SaveGoldInfo();
+            return true;
+        }
+        else
+            return false;
     }
 
     //골드 다른곳에서 얻을때

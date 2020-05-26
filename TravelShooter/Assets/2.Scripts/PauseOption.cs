@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseOption : MonoBehaviour
 {
@@ -21,25 +22,47 @@ public class PauseOption : MonoBehaviour
     public Canvas WinCanvas;
     public Canvas LoseCanvas;
     public Canvas InfoCanvas;
+    public Canvas ContinueCanvas;
 
     public GameObject Item1;
     public GameObject Item2;
+
+    public GameObject Bullet;
+    public GameObject ContinuePosition;
 
     //아이템 관리
     public int PreviewLineState = -1;
 
     public int MulitShotState = -1;
 
+    public Text CountDown;
+    public int TimeCost = 10;
+
+    private IEnumerator CountDownC;
+    private IEnumerator BulletCheckC;
+
+    public GameObject[] Bullets;
+    public bool IsContinued = false;
+    public Text ContinueText;
+
     // Start is called before the first frame update
     void Start()
     {
+        CountDownC = CountDownCoroutine();
+        BulletCheckC = BulletCheckCoroutine();
+
+        Bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        StartCoroutine(BulletCheckC);
+
+        ContinueText.enabled = false;
+
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
         mainCanvas.enabled = true;
         stopCanvas.enabled = false;
         WinCanvas.enabled = false;
         LoseCanvas.enabled = false;
-
+        ContinueCanvas.enabled = false;
 
         PreviewLineState = -1;
 
@@ -50,7 +73,7 @@ public class PauseOption : MonoBehaviour
         }
         else
             BGMClass.instance.GetComponent<AudioSource>().Play();
-
+        
     }
 
     //아이템1 체크 관리
@@ -126,7 +149,6 @@ public class PauseOption : MonoBehaviour
             
         }
 
-
     }
 
     public void StageInfo()
@@ -160,6 +182,66 @@ public class PauseOption : MonoBehaviour
         stopCanvas.enabled = true;
 
     }
+
+    public void Continue()
+    {
+        Time.timeScale = 0;
+        TimeCost = 10;
+        StartCoroutine(CountDownC);
+    }
+
+    public void ContinueClicked()
+    {
+        if(gameObject.GetComponent<GoldManagement>().UseGoldForContinue())
+        {
+            Instantiate(Bullet,ContinuePosition.transform);
+            Time.timeScale = 1;
+            IsContinued = true;
+            ContinueCanvas.enabled = false;
+        }
+        else
+        {
+            ContinueText.enabled = true;
+        }
+    }
+
+    public IEnumerator CountDownCoroutine()
+    {
+        while (true)
+        {
+            Debug.Log("CountDownCoroutine()");
+            if (TimeCost > 0)
+            {
+                TimeCost -= 1;
+                CountDown.text = TimeCost.ToString();
+            }
+            else
+            {
+                Time.timeScale = 1;
+                ContinueCanvas.enabled = false;
+                StopCoroutine(CountDownC);
+            }
+            //yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
+        }
+    }
+
+    public IEnumerator BulletCheckCoroutine()
+    {
+        while (true)
+        {
+            Debug.Log("BulletCheck()");
+            Bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            if (Bullets.Length <= 0 && IsContinued == false)
+            {
+                ContinueCanvas.enabled = true;
+                Continue();
+                StopCoroutine(BulletCheckC);
+            }
+            yield return new WaitForSecondsRealtime(1);
+        }
+    }
+
     public void ResumeGame()
     {
         mainCanvas.enabled = true;
