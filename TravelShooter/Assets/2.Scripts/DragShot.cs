@@ -9,7 +9,7 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(LineRenderer))]
 public class DragShot : MonoBehaviour
 {
-    public GameObject _ball;
+    public GameObject ball;
     public bool respawn = false;
 
     public enum Kinds
@@ -64,6 +64,7 @@ public class DragShot : MonoBehaviour
         rbody.useGravity = false;
         pauseOptionScript = GameObject.Find("GameManager");
         guide = transform.GetChild(0).gameObject;
+        tag = "Bullet";
     }
     
     void DragObject()
