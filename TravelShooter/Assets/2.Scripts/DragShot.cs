@@ -63,7 +63,8 @@ public class DragShot : MonoBehaviour
         obstacle = gameObject.GetComponent<NavMeshObstacle>();
         rbody.useGravity = false;
         pauseOptionScript = GameObject.Find("GameManager");
-        guide = GameObject.Find("GuideLine");
+        guide = transform.GetChild(0).gameObject;
+        tag = "Bullet";
     }
 
 
