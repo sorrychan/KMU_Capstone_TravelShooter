@@ -42,6 +42,7 @@ public class PauseOption : MonoBehaviour
     private IEnumerator BulletCheckC;
 
     public GameObject[] Bullets;
+    public GameObject[] Enemys;
     public bool IsContinued = false;
     public Text ContinueText;
 
@@ -209,7 +210,7 @@ public class PauseOption : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("CountDownCoroutine()");
+            //Debug.Log("CountDownCoroutine()");
             if (TimeCost > 0)
             {
                 TimeCost -= 1;
@@ -230,9 +231,10 @@ public class PauseOption : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("BulletCheck()");
+            //Debug.Log("BulletCheck()");
             Bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            if (Bullets.Length <= 0 && IsContinued == false)
+            Enemys = GameObject.FindGameObjectsWithTag("Enemy");
+            if (Bullets.Length <= 0 && IsContinued == false&& Enemys.Length>0)
             {
                 ContinueCanvas.enabled = true;
                 Continue();
