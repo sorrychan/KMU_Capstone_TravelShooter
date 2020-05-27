@@ -17,7 +17,7 @@ public class AI : MonoBehaviour
     public float Speed = 10.0f;
     //Child 설정된 노멀상태 애니메이션 제어
     public Animator animator;                //애니메이션 제어를 위해 선언
-    public GameObject Gamemanager;      //게임메니져를 받아오기 위해 선언
+    public GameObject GamePlayCamera;      //게임메니져를 받아오기 위해 선언
     public enum EnemyPattern { pattern1, pattern2, pattern3 };  //패턴 종류
     public EnemyPattern enemypattern;
     public float CollisionSpeed = 0.5f;
@@ -26,6 +26,12 @@ public class AI : MonoBehaviour
     public GameObject Ragdobj;
     public GameObject Spine;
     public bool x = true;
+
+    private void Start()
+    {
+        Target = GameObject.Find("DefenseLine");
+        GamePlayCamera = GameObject.Find("GamePlayCamera");
+    }
 
     void OnEnable()     //SetActive(true) 상태가 될때 초기화
     {
@@ -44,6 +50,8 @@ public class AI : MonoBehaviour
             TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
         }
 
+        Target = GameObject.Find("DefenseLine");
+        GamePlayCamera = GameObject.Find("GamePlayCamera");
     }
 
     IEnumerator CheckMonsterState()     //적의 상태 체크
@@ -96,8 +104,8 @@ public class AI : MonoBehaviour
 
                     //gameObject.tag = "Die";
                     yield return new WaitForSeconds(2f);
-                    Gamemanager.GetComponent<GameManagement>().EnemyCount -= 1;
-                    Gamemanager.GetComponent<GameManagement>().GameClearCheak();
+                    GamePlayCamera.GetComponent<GameManagement>().EnemyCount -= 1;
+                    GamePlayCamera.GetComponent<GameManagement>().GameClearCheak();
                     Destroy(gameObject);
                     break;
 

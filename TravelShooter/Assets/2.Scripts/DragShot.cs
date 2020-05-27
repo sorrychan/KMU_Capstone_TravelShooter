@@ -62,7 +62,12 @@ public class DragShot : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         obstacle = gameObject.GetComponent<NavMeshObstacle>();
         rbody.useGravity = false;
+        pauseOptionScript = GameObject.Find("GameManager");
+        guide = transform.GetChild(0).gameObject;
+        tag = "Bullet";
     }
+
+
 
     void DragObject()
      {
@@ -74,7 +79,8 @@ public class DragShot : MonoBehaviour
      private void GravityOn()
      {
         rbody.useGravity = true;
-     }
+        //guide.GetComponent<LineRenderer>().enabled =false;
+    }
 
     //private void OnMouseDown()
     //{
@@ -136,12 +142,9 @@ public class DragShot : MonoBehaviour
         }
     }
 
-    //PC용 마우스 입력
-    private void OnMouseDown()
-    {
-        guide.GetComponent<LineRenderer>().enabled = true;
-    }
 
+
+    //PC용 마우스 입력
     private void OnMouseDrag()
     {
         state = pauseOptionScript.GetComponent<PauseOption>().MulitShotState;
@@ -158,6 +161,7 @@ public class DragShot : MonoBehaviour
 
         if (!IsShotProjectile)
         {
+            guide.GetComponent<LineRenderer>().enabled = true;
             currentDistance = Vector3.Distance(currentMousePosition, transform.position); //현재 마우스 위치 갱신
 
             if (currentDistance <= maxDistance)
@@ -197,9 +201,9 @@ public class DragShot : MonoBehaviour
             guide.GetComponent<LineRenderer>().enabled = false;
             GravityOn();
             Vector3 push = shootDirection * shootPower * -1;
-            //push.y = 0;
+            
             GetComponent<Rigidbody>().AddForce(push, ForceMode.Impulse);
-            //   line.enabled = false; //remove the line
+            
             IsShotProjectile = true;
         }
     }
@@ -209,7 +213,7 @@ public class DragShot : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            guide.GetComponent<LineRenderer>().enabled = true;
+            //guide.GetComponent<LineRenderer>().enabled = true;
             Touch touch = Input.GetTouch(0);
 
             // Move the cube if the screen has the finger moving.
@@ -260,9 +264,13 @@ public class DragShot : MonoBehaviour
                 Instantiate(Particle, collisionPos,Quaternion.identity);
                 IsOnceTouchGround = true;
                 if (respawn)
+
                 {
+
                     var ball = Instantiate(_ball, BallPosition.position, Quaternion.identity) as GameObject;
+
                 }
+
             }
             Destroy(gameObject, 4f);
             
@@ -273,6 +281,7 @@ public class DragShot : MonoBehaviour
         {
             IsHitTarget = true;
             Destroy(gameObject, 4f);
+
             //var ball = Instantiate(_ball, _ball.transform.localPosition, Quaternion.identity) as GameObject;
         }
 
@@ -289,5 +298,6 @@ public class DragShot : MonoBehaviour
         }
 
     }
+
     
 }

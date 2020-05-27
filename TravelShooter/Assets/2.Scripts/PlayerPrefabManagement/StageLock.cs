@@ -33,7 +33,7 @@ public class StageLock : MonoBehaviour
                     LockButtons[a].SetActive(false);
                 else
                     LockButtons[a].SetActive(true);
-
+                //LockButtons[a].SetActive(true);
 
             }
         }
