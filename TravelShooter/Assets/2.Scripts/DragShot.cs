@@ -265,7 +265,7 @@ public class DragShot : MonoBehaviour
 
                 {
 
-                    var ball = Instantiate(_ball, BallPosition.position, Quaternion.identity) as GameObject;
+                    Instantiate(ball, BallPosition.position, Quaternion.identity);
 
                 }
 
