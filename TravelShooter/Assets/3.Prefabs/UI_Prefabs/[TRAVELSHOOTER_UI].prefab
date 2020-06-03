@@ -971,7 +971,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 1
@@ -4048,6 +4048,7 @@ MonoBehaviour:
   CountDown: {fileID: 1137579714970084250}
   TimeCost: 5
   Bullets: []
+  Enemys: []
   IsContinued: 0
   ContinueText: {fileID: 1956502206}
 --- !u!114 &1574871930945447857
