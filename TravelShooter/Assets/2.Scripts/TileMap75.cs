@@ -30,7 +30,7 @@ public class TileMap75 : MonoBehaviour
     {
         for (int a = 0; a < 35; a++)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 transform.GetChild(a).GetChild(i).gameObject.SetActive(false);
             }
@@ -54,6 +54,9 @@ public class TileMap75 : MonoBehaviour
 
                 case 4:
                     transform.GetChild(a).GetChild(3).gameObject.SetActive(true);
+                    break;
+                case 5:
+                    transform.GetChild(a).GetChild(4).gameObject.SetActive(true);
                     break;
             }
         }

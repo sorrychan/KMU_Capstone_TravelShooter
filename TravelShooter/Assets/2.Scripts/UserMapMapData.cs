@@ -13,7 +13,7 @@ public class UserMapMapData : MonoBehaviour
     private void Start()
     {
         camera = GameObject.Find("Camera");
-        TileMap75 = GameObject.Find("TileMap75");
+        TileMap75 = GameObject.Find("Map75");
         MapString = Map.Split('/');
         for (int i=0;i<MapString.Length;i++)
         {
@@ -33,7 +33,7 @@ public class UserMapMapData : MonoBehaviour
         Camera.main.gameObject.SetActive(true);
         for (int a = 0; a < 35; a++)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 TileMap75.transform.GetChild(a).GetChild(i).gameObject.SetActive(false);
             }
@@ -57,6 +57,9 @@ public class UserMapMapData : MonoBehaviour
 
                 case 4:
                     TileMap75.transform.GetChild(a).GetChild(3).gameObject.SetActive(true);
+                    break;
+                case 5:
+                    transform.GetChild(a).GetChild(4).gameObject.SetActive(true);
                     break;
             }
         }

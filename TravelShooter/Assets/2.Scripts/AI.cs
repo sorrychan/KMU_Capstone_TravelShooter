@@ -43,14 +43,14 @@ public class AI : MonoBehaviour
         enemyState = EnemyState.idle;               //적의 상태 초기화
         nvAgent.speed = Speed;                       //적의 속도 설정
         //gameObject.tag = "Enemy";                   //적의 테그 설정
+        Target = GameObject.Find("DefenseLine");
         TargetPos = Target.transform.position;       //타겟 위치
 
         if (x)
         {
             TargetPos.x = EnemyTr.position.x;           //x 좌표는 고정 (직진)
         }
-
-        Target = GameObject.Find("DefenseLine");
+        
         GamePlayCamera = GameObject.Find("GamePlayCamera");
     }
 

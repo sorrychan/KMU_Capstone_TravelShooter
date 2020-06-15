@@ -18,6 +18,7 @@ TagManager:
   - UI_TempTarget
   - Wall
   - Fall
+  - Tile
   layers:
   - Default
   - TransparentFX

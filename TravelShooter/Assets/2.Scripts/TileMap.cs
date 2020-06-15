@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileMap : MonoBehaviour
 {
     //public GameObject Choose;
-    public enum Tile { none ,enemy, tree, boom, bullet};    //추가 시 TileMap75 스크립트도 함께 수정
+    public enum Tile { none ,enemy, tree, boom, bullet, wall};    //추가 시 TileMap75, UserMapMapData 스크립트도 함께 수정
     public static int EnumTile;     //버튼에 선택된 오브젝트
     public int TileData=0;          //이 타일의 값
 
@@ -46,6 +46,12 @@ public class TileMap : MonoBehaviour
         EnumTile = 4;
     }
 
+    public void setWall()
+    {
+        //tile = Tile.bullet;
+        EnumTile = 5;
+    }
+
     public void OnClicked()
     {
         //tile = Choose.gameObject.GetComponent<TileMap>().tile;
@@ -54,7 +60,7 @@ public class TileMap : MonoBehaviour
         {
             obj.gameObject.SetActive(false);
         }*/
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
@@ -79,6 +85,9 @@ public class TileMap : MonoBehaviour
 
             case 4:
                 transform.GetChild(3).gameObject.SetActive(true);
+                break;
+            case 5:
+                transform.GetChild(4).gameObject.SetActive(true);
                 break;
         }
     }

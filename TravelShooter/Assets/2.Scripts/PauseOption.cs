@@ -68,13 +68,48 @@ public class PauseOption : MonoBehaviour
         PreviewLineState = -1;
 
         //Debug.Log(BGMClass.instance.name);
-        if (BGMClass.instance.GetComponent<AudioSource>().isPlaying)
+        if (BGMClass.instance != null)
         {
-            return;
+            if (BGMClass.instance.GetComponent<AudioSource>().isPlaying)
+            {
+                return;
+            }
+            else
+                BGMClass.instance.GetComponent<AudioSource>().Play();
         }
-        else
-            BGMClass.instance.GetComponent<AudioSource>().Play();
         
+    }
+
+    private void OnEnable()
+    {
+        CountDownC = CountDownCoroutine();
+        BulletCheckC = BulletCheckCoroutine();
+
+        Bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        StartCoroutine(BulletCheckC);
+
+        ContinueText.enabled = false;
+
+        Time.timeScale = 1;
+        InfoCanvas.enabled = true;
+        mainCanvas.enabled = true;
+        stopCanvas.enabled = false;
+        WinCanvas.enabled = false;
+        LoseCanvas.enabled = false;
+        ContinueCanvas.enabled = false;
+
+        PreviewLineState = -1;
+
+        //Debug.Log(BGMClass.instance.name);
+        if (BGMClass.instance != null)
+        {
+            if (BGMClass.instance.GetComponent<AudioSource>().isPlaying)
+            {
+                return;
+            }
+            else
+                BGMClass.instance.GetComponent<AudioSource>().Play();
+        }
     }
 
     //아이템1 체크 관리

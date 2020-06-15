@@ -14,7 +14,7 @@ public class TileMapC : MonoBehaviour
             RaycastHit hit;
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out hit);
-            if (hit.collider != null)
+            if (hit.collider != null && hit.transform.gameObject.tag == "Tile")
             {
                 hit.transform.gameObject.SendMessage("OnClicked");
             }

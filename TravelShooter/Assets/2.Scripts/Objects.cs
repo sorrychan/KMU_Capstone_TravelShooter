@@ -58,9 +58,22 @@ public class Objects : MonoBehaviour
                     foreach (Transform obj in BreakObjectList)
                     {
                         obj.gameObject.AddComponent<Rigidbody>();
+                        obj.gameObject.GetComponent<Rigidbody>().mass = 1f;
                     }
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
+                    /*
+                    UnityEngine.Collider[] BreakObjectLists = Physics.OverlapSphere(transform.position, 15.0f);     //원점을 중심으로 반경 안에 있는 오브젝트 객체 추출, 폭발을 다른 오브젝트나 적들에게도 영향이 가게 하려면 이것을 사용
+
+                    foreach (UnityEngine.Collider obj in BreakObjectLists)
+                    {
+                        if (obj.GetComponent<Rigidbody>() != null)
+                        {
+                            rb = obj.GetComponent<Rigidbody>();
+                            rb.AddExplosionForce(100, transform.position, 3, 0);       //힘, 위치, 반경, 위로 튀는 힘
+                        }
+                    }
+                    */
                     break;
 
                 case Kinds.Exp:
@@ -82,7 +95,7 @@ public class Objects : MonoBehaviour
                         if (obj.GetComponent<Rigidbody>() != null)
                         {
                             rb = obj.GetComponent<Rigidbody>();
-                            rb.AddExplosionForce(700, transform.position, 3, 1);       //힘, 위치, 반경, 위로 튀는 힘
+                            rb.AddExplosionForce(4000, transform.position, 3, 0.1f);       //힘, 위치, 반경, 위로 튀는 힘
                         }
 
                         if (obj.GetComponent<AI_GiveDieInfo>() != null)
@@ -95,7 +108,7 @@ public class Objects : MonoBehaviour
 
                     isActivation = 1;       //상호작용 후 물체는 활성화
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    Destroy(gameObject,3f);
+                    //Destroy(gameObject,6f);
                     break;
 
                 case Kinds.Effect:
@@ -120,11 +133,11 @@ public class Objects : MonoBehaviour
                     break;
 
                 case Kinds.Fire:
-                    transform.GetChild(0).gameObject.SetActive(true);
+                    transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
 
                     isActivation = 1;       //상호작용 후 물체는 활성화(일회용이라면)
 
-                    Destroy(this.gameObject, 5.0f);
+                    Destroy(this.gameObject.transform.GetChild(0).GetChild(0).gameObject, 5.0f);
                     break;
             }
         }

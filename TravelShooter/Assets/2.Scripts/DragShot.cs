@@ -53,7 +53,7 @@ public class DragShot : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseOptionScript;
-    private int state = -1;
+    public int state = -1;
     public Transform BallPosition;
 
     private void Awake()

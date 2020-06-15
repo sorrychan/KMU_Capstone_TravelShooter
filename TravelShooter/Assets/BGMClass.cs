@@ -17,6 +17,7 @@ public class BGMClass : MonoBehaviour
                 _instance = GameObject.FindObjectOfType<BGMClass>();
 
                 //Tell unity not to destroy this object when loading a new scene!
+                if (_instance != null)
                 DontDestroyOnLoad(_instance.gameObject);
             }
 
