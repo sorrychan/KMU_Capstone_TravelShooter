@@ -19,6 +19,7 @@ public class Function : MonoBehaviour
     public GameObject EnemyText;
     public GameObject BulletText;
     public GameObject ClusterBulletText;
+    public GameObject RespawnBulletText;
     public GameObject TreeText;
     public GameObject WallText;
     public GameObject BoomText;
@@ -27,6 +28,7 @@ public class Function : MonoBehaviour
     public GameObject EnemyF;
     public GameObject BulletF;
     public GameObject ClusterBulletF;
+    public GameObject RespawnBulletF;
     public GameObject TreeF;
     public GameObject WallF;
     public GameObject Boomf;
@@ -56,21 +58,27 @@ public class Function : MonoBehaviour
                 break;
 
             case 3:
+                RespawnBulletF.SetActive(true);
+                GameManager.GetComponent<PauseOption>().MulitShotState = -1;
+                FunctionText.text = "리스폰 총알";
+                break;
+
+            case 4:
                 TreeF.SetActive(true);
                 FunctionText.text = "나무";
                 break;
 
-            case 4:
+            case 5:
                 WallF.SetActive(true);
                 FunctionText.text = "벽";
                 break;
 
-            case 5:
+            case 6:
                 Boomf.SetActive(true);
                 FunctionText.text = "폭탄";
                 break;
 
-            case 6:
+            case 7:
                 Firef.SetActive(true);
                 FunctionText.text = "불";
                 break;
@@ -94,18 +102,22 @@ public class Function : MonoBehaviour
                 break;
 
             case 3:
-                TreeFunction();
+                RespawnBulletFunction();
                 break;
 
             case 4:
-                WallFunction();
+                TreeFunction();
                 break;
 
             case 5:
-                BoomFunction();
+                WallFunction();
                 break;
 
             case 6:
+                BoomFunction();
+                break;
+
+            case 7:
                 FireFunction();
                 break;
         }
@@ -113,7 +125,7 @@ public class Function : MonoBehaviour
 
     public void OnClickedNext()
     {
-        if (F < 6)
+        if (F < 7)
         {
             F++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -151,6 +163,14 @@ public class Function : MonoBehaviour
             ClusterBulletText.gameObject.SetActive(false);
         else
             ClusterBulletText.gameObject.SetActive(true);
+    }
+
+    void RespawnBulletFunction()
+    {
+        if (RespawnBulletText.gameObject.activeSelf)
+            RespawnBulletText.gameObject.SetActive(false);
+        else
+            RespawnBulletText.gameObject.SetActive(true);
     }
 
     void TreeFunction()
