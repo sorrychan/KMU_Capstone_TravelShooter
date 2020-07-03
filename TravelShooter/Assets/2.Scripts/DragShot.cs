@@ -254,34 +254,32 @@ public class DragShot : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.collider.tag == "PLANES")
-        {
-            if (!IsOnceTouchGround)
+        
+            if (other.collider.tag == "PLANES")
             {
-                Vector3 collisionPos = transform.position;
-                Instantiate(Particle, collisionPos,Quaternion.identity);
-                IsOnceTouchGround = true;
-                if (respawn)
-
+                if (!IsOnceTouchGround)
                 {
+                    Vector3 collisionPos = transform.position;
+                    Instantiate(Particle, collisionPos, Quaternion.identity);
+                    IsOnceTouchGround = true;
+                    if (respawn)
 
-                    Instantiate(ball, BallPosition.position, Quaternion.identity);
+                    {
+
+                        Instantiate(ball, BallPosition.position, Quaternion.identity);
+
+                    }
 
                 }
-
+                Destroy(gameObject, 4f);
             }
-            Destroy(gameObject, 4f);
-            
+            else
+            {
+                IsHitTarget = true;
+                Destroy(gameObject, 4f);
 
-
-        }
-        else
-        {
-            IsHitTarget = true;
-            Destroy(gameObject, 4f);
-
-            //var ball = Instantiate(_ball, _ball.transform.localPosition, Quaternion.identity) as GameObject;
-        }
+                //var ball = Instantiate(_ball, _ball.transform.localPosition, Quaternion.identity) as GameObject;
+            }
 
         if (kind == Kinds.cluster)
         {

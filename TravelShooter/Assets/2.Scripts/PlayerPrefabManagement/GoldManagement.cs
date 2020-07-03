@@ -3,10 +3,11 @@ using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GoldManagement : MonoBehaviour
 {
-    public Text goldAmount = null;
+    public TextMeshPro goldAmount = null;
 
     private int m_GoldAmout = 0;
     //public bool isGoldBelowZero = false;

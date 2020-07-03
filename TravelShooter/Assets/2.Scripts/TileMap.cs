@@ -48,7 +48,7 @@ public class TileMap : MonoBehaviour
 
     public void setWall()
     {
-        //tile = Tile.bullet;
+        //tile = Tile.wall;
         EnumTile = 5;
     }
 
@@ -95,6 +95,6 @@ public class TileMap : MonoBehaviour
     public void OnPlay()
     {
         gameObject.GetComponent<BoxCollider>().enabled = false;
-        transform.Find("Cube").gameObject.SetActive(false);
+        transform.GetChild(5).gameObject.SetActive(false);
     }
 }

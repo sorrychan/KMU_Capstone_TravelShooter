@@ -8,7 +8,7 @@ public class Collider : MonoBehaviour
     {
         if(other.gameObject.tag=="Bullet" || other.gameObject.tag == "Object")
         {
-            Destroy(other);
+            //Destroy(other);
         }
     }
 }

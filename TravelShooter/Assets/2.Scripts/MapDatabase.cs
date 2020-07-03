@@ -7,7 +7,7 @@ public class MapDatabase : MonoBehaviour
     public string inputMapName;
     public string inputEditor;
     public string ImplodeMapData;
-    public int[] MapData = new int[35];
+    public int[] MapData = new int[63];
     public GameObject Tile75;
     
     string SaveMapURL = "http://gn0317.dothome.co.kr/index.php";
@@ -25,7 +25,7 @@ public class MapDatabase : MonoBehaviour
             ImplodeMapData = ImplodeMapData + MapData[element] + "/";
         }*/
 
-        for(int i=0;i<35;i++)
+        for(int i=0;i<63;i++)
         {
             MapData[i] = Tile75.transform.GetChild(i).GetComponent<TileMap>().TileData;
             ImplodeMapData = ImplodeMapData + MapData[i] + "/";

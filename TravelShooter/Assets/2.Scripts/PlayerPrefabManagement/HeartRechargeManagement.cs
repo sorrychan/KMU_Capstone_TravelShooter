@@ -3,13 +3,14 @@ using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HeartRechargeManagement : MonoBehaviour
 {
     #region Heart
     //화면에 표시하기 위한 UI변수
-    public Text heartRechargeTimer = null;
-    public Text heartAmountLabel = null;
+    public TextMeshPro heartRechargeTimer = null;
+    public TextMeshPro heartAmountLabel = null;
 
 
     private int m_HeartAmount = 0; //보유 하트 개수

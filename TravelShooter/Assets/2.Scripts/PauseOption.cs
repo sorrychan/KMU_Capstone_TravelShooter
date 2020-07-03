@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PauseOption : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class PauseOption : MonoBehaviour
     public Canvas WinCanvas;
     public Canvas LoseCanvas;
     public Canvas InfoCanvas;
+    public TextMeshPro Gold;
     public Canvas ContinueCanvas;
+    public TextMeshPro T1;
+    public TextMeshPro T2;
 
     public GameObject Item1;
     public GameObject Item2;
@@ -44,7 +48,7 @@ public class PauseOption : MonoBehaviour
     public GameObject[] Bullets;
     public GameObject[] Enemys;
     public bool IsContinued = false;
-    public Text ContinueText;
+    //public Text ContinueText;
 
     // Start is called before the first frame update
     void Start()
@@ -55,15 +59,21 @@ public class PauseOption : MonoBehaviour
         Bullets = GameObject.FindGameObjectsWithTag("Bullet");
         StartCoroutine(BulletCheckC);
 
-        ContinueText.enabled = false;
-
+        //ContinueText.enabled = false;
+        if (T2 != null)
+            T2.gameObject.SetActive(false);
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
+        if (Gold != null)
+            Gold.gameObject.SetActive(true);
         mainCanvas.enabled = true;
         stopCanvas.enabled = false;
         WinCanvas.enabled = false;
         LoseCanvas.enabled = false;
         ContinueCanvas.enabled = false;
+        if (T1 != null)
+            T1.gameObject.SetActive(false);
+        //T2.gameObject.SetActive(false);
 
         PreviewLineState = -1;
 
@@ -88,15 +98,21 @@ public class PauseOption : MonoBehaviour
         Bullets = GameObject.FindGameObjectsWithTag("Bullet");
         StartCoroutine(BulletCheckC);
 
-        ContinueText.enabled = false;
-
+        // ContinueText.enabled = false;
+        if(T2!=null)
+            T2.gameObject.SetActive(false);
         Time.timeScale = 1;
         InfoCanvas.enabled = true;
+        if (Gold != null)
+            Gold.gameObject.SetActive(true);
         mainCanvas.enabled = true;
         stopCanvas.enabled = false;
         WinCanvas.enabled = false;
         LoseCanvas.enabled = false;
         ContinueCanvas.enabled = false;
+        if (T1 != null)
+            T1.gameObject.SetActive(false);
+        //T2.gameObject.SetActive(false);
 
         PreviewLineState = -1;
 
@@ -203,7 +219,9 @@ public class PauseOption : MonoBehaviour
             Campos.GetComponent<GameCameraMovement>().IsMoveOn = true;
 
             InfoCanvas.enabled = false;
-       
+            if (Gold != null)
+                Gold.gameObject.SetActive(false);
+
     }
     public void NextStage()
     {
@@ -234,10 +252,16 @@ public class PauseOption : MonoBehaviour
             Time.timeScale = 1;
             IsContinued = true;
             ContinueCanvas.enabled = false;
+            if (T1 != null)
+                T1.gameObject.SetActive(false);
+            if (T2 != null)
+                T2.gameObject.SetActive(false);
         }
         else
         {
-            ContinueText.enabled = true;
+            //ContinueText.enabled = true;
+            if (T2 != null)
+                T2.gameObject.SetActive(true);
         }
     }
 
@@ -246,6 +270,7 @@ public class PauseOption : MonoBehaviour
         while (true)
         {
             //Debug.Log("CountDownCoroutine()");
+            IsContinued = true;
             if (TimeCost > 0)
             {
                 TimeCost -= 1;
@@ -255,10 +280,14 @@ public class PauseOption : MonoBehaviour
             {
                 Time.timeScale = 1;
                 ContinueCanvas.enabled = false;
+                if (T1 != null)
+                    T1.gameObject.SetActive(false);
+                if (T2 != null)
+                    T2.gameObject.SetActive(false);
                 StopCoroutine(CountDownC);
             }
             //yield return new WaitForSeconds(1);
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(1f);
         }
     }
 
@@ -272,6 +301,9 @@ public class PauseOption : MonoBehaviour
             if (Bullets.Length <= 0 && IsContinued == false&& Enemys.Length>0)
             {
                 ContinueCanvas.enabled = true;
+                if (T1 != null)
+                    T1.gameObject.SetActive(true);
+                //T2.gameObject.SetActive(true);
                 Continue();
                 StopCoroutine(BulletCheckC);
             }

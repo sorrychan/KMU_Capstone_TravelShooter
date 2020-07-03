@@ -9,7 +9,7 @@ public class Hidden : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Debug.Log("dd");
-            Destroy(gameObject, 1f);
+            //Destroy(gameObject, 1f);
         }
     }
 }
