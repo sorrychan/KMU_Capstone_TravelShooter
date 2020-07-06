@@ -4653,6 +4653,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 62293166}
+        m_MethodName: OnClickUseHeart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1574871931203888212
 GameObject:
   m_ObjectHideFlags: 0
@@ -6458,6 +6469,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126150672146203814, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2126150673779928349, guid: 45b8be286edd537408b4378c62ab8623,
         type: 3}
       propertyPath: m_Camera
@@ -6488,21 +6519,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -9.6
       objectReference: {fileID: 0}
-    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126150672146203833, guid: 45b8be286edd537408b4378c62ab8623,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2126150673616046724, guid: 45b8be286edd537408b4378c62ab8623,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6513,11 +6529,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1574871930945447863}
-    - target: {fileID: 2126150672146203814, guid: 45b8be286edd537408b4378c62ab8623,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2126150672919896153, guid: 45b8be286edd537408b4378c62ab8623,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6532,6 +6543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -43.300003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126150674181598586, guid: 45b8be286edd537408b4378c62ab8623,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45b8be286edd537408b4378c62ab8623, type: 3}
