@@ -19,7 +19,7 @@ public class TileMap75 : MonoBehaviour
             obj.SendMessage("OnPlay");
         }
 
-        for (int i = 0; i < 63; i++)
+        for (int i = 0; i < 77; i++)
         {
             TempMap.GetComponent<TempMap>().MapData[i] = transform.GetChild(i).GetComponent<TileMap>().TileData;
         }
@@ -28,7 +28,7 @@ public class TileMap75 : MonoBehaviour
 
     public void LoadTemp()
     {
-        for (int a = 0; a < 63; a++)
+        for (int a = 0; a < 77; a++)
         {
             for (int i = 0; i < 5; i++)
             {

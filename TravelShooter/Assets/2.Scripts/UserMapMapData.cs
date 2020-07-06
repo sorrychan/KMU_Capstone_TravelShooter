@@ -31,7 +31,7 @@ public class UserMapMapData : MonoBehaviour
 
         camera.gameObject.SetActive(false);
         Camera.main.gameObject.SetActive(true);
-        for (int a = 0; a < 63; a++)
+        for (int a = 0; a < 77; a++)
         {
             for (int i = 0; i < 5; i++)
             {

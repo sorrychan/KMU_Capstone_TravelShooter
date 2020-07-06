@@ -12,9 +12,11 @@ public class MapDatabase : MonoBehaviour
     public Text MapName;
     public Text Editor;
 
-    public int[] MapData = new int[63];
+    public int[] MapData = new int[77];
     public GameObject Tile75;
-    
+
+    public GameObject TempMap;
+
     string SaveMapURL = "http://gn0317.dothome.co.kr/index.php";
     
 
@@ -30,7 +32,14 @@ public class MapDatabase : MonoBehaviour
             ImplodeMapData = ImplodeMapData + MapData[element] + "/";
         }*/
 
-        for(int i=0;i<63;i++)
+
+        for (int i = 0; i < 77; i++)
+        {
+            TempMap.GetComponent<TempMap>().MapData[i] = Tile75.transform.GetChild(i).GetComponent<TileMap>().TileData;
+        }
+
+
+        for (int i=0;i<77;i++)
         {
             MapData[i] = Tile75.transform.GetChild(i).GetComponent<TileMap>().TileData;
             ImplodeMapData = ImplodeMapData + MapData[i] + "/";
