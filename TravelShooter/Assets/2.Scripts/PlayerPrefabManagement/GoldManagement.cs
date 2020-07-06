@@ -74,6 +74,15 @@ public class GoldManagement : MonoBehaviour
         SaveGoldInfo();
 
     }
+
+    //광고 리워드
+    public void AdsRewardGold()
+    {
+        LoadGoldInfo();
+        m_GoldAmout += 100;
+        SaveGoldInfo();
+    }
+
     //가이드선 선택 구매후 플레이시 호출
     public void UseGoldForGuideLine()
     {
