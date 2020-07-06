@@ -10,4 +10,9 @@ public class TileMapEditorMove : MonoBehaviour
     {
         SceneManager.LoadScene("Scene01");
     }
+
+    public void MoveToUserMap()
+    {
+        SceneManager.LoadScene("UserMap");
+    }
 }

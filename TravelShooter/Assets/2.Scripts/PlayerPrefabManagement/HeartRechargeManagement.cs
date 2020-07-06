@@ -11,9 +11,10 @@ public class HeartRechargeManagement : MonoBehaviour
     //화면에 표시하기 위한 UI변수
     public TextMeshPro heartRechargeTimer = null;
     public TextMeshPro heartAmountLabel = null;
+    //public TextMeshPro NotEnoughHeart = null;
+    public TextMeshProUGUI NotEnoughHeart = null;
 
-
-    private int m_HeartAmount = 0; //보유 하트 개수
+    static private int m_HeartAmount = 0; //보유 하트 개수
     public bool isHeartBelowZero = false;
     private DateTime m_AppQuitTime = new DateTime(1970, 1, 1).ToLocalTime();
     private const int MAX_HEART = 20; //하트 최대값
@@ -65,9 +66,11 @@ public class HeartRechargeManagement : MonoBehaviour
     public void ResetPlayerPrefabData()
     {
         m_RechargeRemainTime = 60;
-        heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
-        m_HeartAmount = 18;
-        heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
+        if(heartRechargeTimer != null)
+            heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
+        m_HeartAmount = 20;
+        if (heartAmountLabel != null)
+            heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
     }
     //게임 종료 시 실행되는 함수
     public void OnApplicationQuit()
@@ -80,19 +83,26 @@ public class HeartRechargeManagement : MonoBehaviour
     //버튼 이벤트에 이 함수를 연동한다.
     public void OnClickUseHeart()
     {
+        LoadHeartInfo();
+
+
+
         //Debug.Log("OnClickUseHeart");
         UseHeart();
-
+        SaveHeartInfo();
     }
 
     public void Init()
     {
+        if(NotEnoughHeart!=null)
+            NotEnoughHeart.gameObject.SetActive(false);
         Time.timeScale = 1;
         m_HeartAmount = 0;
         m_RechargeRemainTime = 0;
         m_AppQuitTime = new DateTime(1970, 1, 1).ToLocalTime();
         //Debug.Log("heartRechargeTimer : " + m_RechargeRemainTime + "s");
-        heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
+        if (heartRechargeTimer != null)
+            heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
 
         string SecretValue = "SecretValueKey";
 
@@ -136,7 +146,8 @@ public class HeartRechargeManagement : MonoBehaviour
             {
                 m_HeartAmount = MAX_HEART;
             }
-            heartAmountLabel.text = m_HeartAmount.ToString();
+            if (heartAmountLabel != null)
+                heartAmountLabel.text = m_HeartAmount.ToString();
             //Debug.Log("Loaded HeartAmount : " + m_HeartAmount);
             result = true;
         }
@@ -225,7 +236,8 @@ public class HeartRechargeManagement : MonoBehaviour
         {
             m_RechargeTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime, onFinish));
         }
-        heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
+        if (heartAmountLabel != null)
+            heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
         //Debug.Log("HeartAmount : " + m_HeartAmount);
     }
     public void UseHeart(Action onFinish = null)
@@ -233,8 +245,13 @@ public class HeartRechargeManagement : MonoBehaviour
       
         if (m_HeartAmount < 3)
         {
-            heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
+            if (heartAmountLabel != null)
+                heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
             //isHeartBelowZero = true;
+
+            if (NotEnoughHeart != null)
+                NotEnoughHeart.gameObject.SetActive(true);
+
             return;
         }
         //else
@@ -243,7 +260,8 @@ public class HeartRechargeManagement : MonoBehaviour
         m_HeartAmount-=3;
         SaveHeartInfo();
         SaveAppQuitTime();
-        heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
+        if (heartAmountLabel != null)
+            heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
         if (m_RechargeTimerCoroutine == null)
         {
             m_RechargeTimerCoroutine = StartCoroutine(DoRechargeTimer(HeartRechargeInterval));
@@ -267,12 +285,14 @@ public class HeartRechargeManagement : MonoBehaviour
             m_RechargeRemainTime = remainTime;
         }
         //Debug.Log("heartRechargeTimer : " + m_RechargeRemainTime + "s");
-        heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
+        if (heartRechargeTimer != null)
+            heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
 
         while (m_RechargeRemainTime > 0)
         {
             //Debug.Log("heartRechargeTimer : " + m_RechargeRemainTime + "s");
-            heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
+            if (heartRechargeTimer != null)
+                heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
             m_RechargeRemainTime -= 1;
             yield return new WaitForSeconds(1f);
         }
@@ -281,7 +301,8 @@ public class HeartRechargeManagement : MonoBehaviour
         {
             m_HeartAmount = MAX_HEART;
             m_RechargeRemainTime = 0;
-            heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
+            if (heartRechargeTimer != null)
+                heartRechargeTimer.text = string.Format("{0} s", m_RechargeRemainTime);
             //Debug.Log("HeartAmount reached max amount");
             m_RechargeTimerCoroutine = null;
         }
@@ -289,7 +310,8 @@ public class HeartRechargeManagement : MonoBehaviour
         {
             m_RechargeTimerCoroutine = StartCoroutine(DoRechargeTimer(HeartRechargeInterval, onFinish));
         }
-        heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
+        if (heartAmountLabel != null)
+            heartAmountLabel.text = string.Format("{0}", m_HeartAmount.ToString());
         //Debug.Log("HeartAmount : " + m_HeartAmount);
     }
 

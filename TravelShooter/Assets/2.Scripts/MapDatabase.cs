@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapDatabase : MonoBehaviour
 {
     public string inputMapName;
     public string inputEditor;
     public string ImplodeMapData;
+
+    public Text MapName;
+    public Text Editor;
+
     public int[] MapData = new int[63];
     public GameObject Tile75;
     
@@ -31,7 +36,10 @@ public class MapDatabase : MonoBehaviour
             ImplodeMapData = ImplodeMapData + MapData[i] + "/";
         }
         ImplodeMapData = ImplodeMapData.Substring(0, ImplodeMapData.Length - 1);
-        
+
+        inputMapName = MapName.text;
+        inputEditor = Editor.text;
+
         form.AddField("MapNamePost", inputMapName);
         form.AddField("EditorPost", inputEditor);
         form.AddField("MapdataPost", ImplodeMapData);
