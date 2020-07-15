@@ -29,6 +29,7 @@ public class AI : MonoBehaviour
 
     private void Start()
     {
+
         Target = GameObject.Find("DefenseLine");
         GamePlayCamera = GameObject.Find("GamePlayCamera");
     }

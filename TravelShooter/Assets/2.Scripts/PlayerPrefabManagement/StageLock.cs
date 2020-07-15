@@ -24,6 +24,7 @@ public class StageLock : MonoBehaviour
 
     private void Start()
     {
+        //ResetClearedStage();
         if (LockButtons != null)
         {
             for (int a = 0; a < LockButtons.Length; a++)
