@@ -36,6 +36,9 @@ public class StageLock : MonoBehaviour
                     LockButtons[a].SetActive(true);
                 //LockButtons[a].SetActive(true);
 
+                //PlayerPrefs.SetInt(StageClearData, 0);
+                //PlayerPrefs.Save();
+
             }
         }
     }
@@ -103,7 +106,7 @@ public class StageLock : MonoBehaviour
             if (PlayerPrefs.HasKey(StageClearData))
             {
                 m_ClearedStage = PlayerPrefs.GetInt(StageClearData);
-
+                //m_ClearedStage = 0;
             }
             else
             {

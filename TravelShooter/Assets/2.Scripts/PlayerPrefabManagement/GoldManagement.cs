@@ -17,7 +17,7 @@ public class GoldManagement : MonoBehaviour
     public int BuyGuideLine = 300;
     public int BuyMultiShot = 1000;
     public int ExtraGold = 500;
-    public int Continue = 0;
+    public int Continue = 500;
 
     private string g_key;
     private string g_value;
@@ -173,7 +173,7 @@ public class GoldManagement : MonoBehaviour
             if (PlayerPrefs.HasKey(GoldData))
             {
                 m_GoldAmout = PlayerPrefs.GetInt(GoldData);
-
+                //m_GoldAmout = 0;
             }
             else
             {

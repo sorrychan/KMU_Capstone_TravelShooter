@@ -265,6 +265,17 @@ public class PauseOption : MonoBehaviour
         }
     }
 
+    public void ExitContinueButton()
+    {
+        Time.timeScale = 1;
+        ContinueCanvas.enabled = false;
+        if (T1 != null)
+            T1.gameObject.SetActive(false);
+        if (T2 != null)
+            T2.gameObject.SetActive(false);
+        StopCoroutine(CountDownC);
+    }
+
     public IEnumerator CountDownCoroutine()
     {
         while (true)
