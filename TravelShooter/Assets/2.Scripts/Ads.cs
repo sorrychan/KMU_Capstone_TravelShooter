@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 public class Ads:MonoBehaviour
 {
     public GameObject Gold;
-
+    /*
     public void ShowRewardedAd()
     {
         if (Advertisement.IsReady("rewardedVideo"))
@@ -31,4 +31,5 @@ public class Ads:MonoBehaviour
                 break;
         }
     }
+    */
 }
