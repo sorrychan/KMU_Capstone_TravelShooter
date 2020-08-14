@@ -209,6 +209,7 @@ public class DragShot : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.touchCount > 0)
         {
             //guide.GetComponent<LineRenderer>().enabled = true;
@@ -242,7 +243,7 @@ public class DragShot : MonoBehaviour
             }
 
         }
-
+        */
         if (IsHitTarget)
         {
             DragObject();

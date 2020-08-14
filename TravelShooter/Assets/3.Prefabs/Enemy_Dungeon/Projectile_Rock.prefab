@@ -1090,7 +1090,7 @@ MonoBehaviour:
     m_Bits: 512
   maxDistance: 5
   power: 40
-  guide: {fileID: 1792424872}
+  guide: {fileID: 0}
   Particle: {fileID: 173054, guid: eead5c11b5b000c459d5e73bbeaddb80, type: 3}
   dragValue: 0.9
   shotposY: 0.5
